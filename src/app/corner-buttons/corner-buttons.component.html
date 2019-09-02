@@ -1,0 +1,9 @@
+<i class="material-icons " (click)="onMinimize()" >remove</i>
+<i class="material-icons" 
+    *ngIf="isResized"
+    (click)="onResize()">filter_none</i>
+<i class="material-icons" 
+    *ngIf="! isResized" 
+    (click)="onMaximize()" >crop_square</i>
+<i class="material-icons close-btn" (click)="onClose()" >close</i>
+

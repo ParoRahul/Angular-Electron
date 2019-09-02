@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --toolbar:#363636;
+    --titlebar: #262626; 
+    --titlebarhover:#565656;
+    --statusbar:#2c3e50;
+    --tabbar:#afafaf;
+    --tabview:#f0f0f0;
+    --text: #fff;
+    --danger:#ce5656;
+    --tool-bar-width: 44px;
+    --title-bar-height: 30px;
+    --footer-height: 20px;
+    --tab-bar-height: 25px;
+}  
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    user-select: none;
+}
