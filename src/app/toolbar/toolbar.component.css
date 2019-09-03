@@ -33,5 +33,5 @@
 
 .material-icons:hover{
     color : #eee;
-    border: 1px solid var(--toolbar);
+    border: 1px solid red;
 }
