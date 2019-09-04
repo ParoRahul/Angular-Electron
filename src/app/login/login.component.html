@@ -6,7 +6,7 @@
                 type="text" 
                 placeholder="Enter Username"
                 class="form-control col-sm-2">
-        <div *ngIf="username.touched && username.invalid" class="alert alert-danger col-sm-5">
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger col-sm-2">
             <div *ngIf="username.errors.required">UserName is required</div>
             <div *ngIf="username.errors.minlength">
                 UserName should be minimum of {{username.errors.minlength.requiredLength}} characters</div>
@@ -18,8 +18,8 @@
                 id="password" 
                 type="password" 
                 placeholder="Enter password"
-                class="form-control col-sm-5">
-        <div *ngIf="password.touched && password.invalid" class="alert alert-danger col-sm-5">
+                class="form-control col-sm-2">
+        <div *ngIf="password.touched && password.invalid" class="alert alert-danger col-sm-2">
             <div *ngIf="password.errors.required">Password is required</div>
         </div>        
     </div>

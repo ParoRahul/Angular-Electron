@@ -7,7 +7,11 @@ import { AppComponent } from './app.component';
 import { CornerButtonsComponent } from './corner-buttons/corner-buttons.component';
 import { TitlebarComponent } from './titlebar/titlebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { StatusbarComponent } from './statusbar/statusbar.component';
 import { LoginComponent } from './login/login.component';
+
+import { SettingsDbService } from './services/settings-db.service';
+import { MessageService } from './services/message.service';
 
 
 @NgModule({
@@ -16,6 +20,7 @@ import { LoginComponent } from './login/login.component';
     CornerButtonsComponent,
     TitlebarComponent,
     ToolbarComponent,
+    StatusbarComponent,
     LoginComponent
   ],
   imports: [
@@ -24,7 +29,10 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    SettingsDbService,
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

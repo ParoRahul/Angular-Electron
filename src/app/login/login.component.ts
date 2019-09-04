@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms'
 
 @Component({
@@ -6,13 +6,15 @@ import { FormGroup,FormControl,Validators } from '@angular/forms'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent implements OnInit {
 
   form = new FormGroup({
     username: new FormControl('',[ Validators.required,
                                    Validators.minLength(5)]),
     password: new FormControl('',Validators.required)
   })
+
+  constructor() { }
   
   get username(){
     return this.form.get('username')
@@ -20,6 +22,9 @@ export class LoginComponent  {
 
   get password(){
     return this.form.get('password')
+  }
+
+  ngOnInit() {
   }
 
 }
