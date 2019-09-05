@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 
 import { SettingsDbService } from './services/settings-db.service';
 import { MessageService } from './services/message.service';
+import { UserDbService } from './services/user-db.service';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MessageService } from './services/message.service';
   ],
   providers: [
     SettingsDbService,
-    MessageService
+    MessageService,
+    UserDbService
   ],
   bootstrap: [AppComponent]
 })
