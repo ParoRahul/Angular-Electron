@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../services/message.service';
-import { Message } from "../common/model/message.model"
+
+
 
 @Component({
   selector: 'app-statusbar',
@@ -10,7 +10,7 @@ import { Message } from "../common/model/message.model"
 export class StatusbarComponent implements OnInit {
   
 
-  constructor(msgService:MessageService) { }
+  constructor() { }
 
   ngOnInit() {
   }

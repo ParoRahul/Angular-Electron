@@ -1,0 +1,61 @@
+<form [formGroup]="form" class="modal" (ngSubmit)="submit(form)">  
+    <h6>Test App</h6>
+    <h6>Sign up</h6>    
+    <div class="form-group">
+        <label for="name" >Name</label>
+        <input  formControlName="name"
+                id="name" 
+                type="text" 
+                placeholder="Enter Name"
+                class="form-control col-md-7">
+        <div *ngIf="name.touched && name.invalid" class="alert alert-danger col-md-7">
+            <div *ngIf="name.errors.required">Name is required</div>
+        </div> 
+    </div>
+    <div class="form-group">
+        <label for="username" >Username</label>
+        <input  formControlName="username"
+                id="username" 
+                type="text" 
+                placeholder="Enter Username"
+                class="form-control col-md-7">
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger col-md-7">
+            <div *ngIf="username.errors.required">UserName is required</div>
+            <div *ngIf="username.errors.minlength">
+                userame should be minimum of {{username.errors.minlength.requiredLength}} characters</div>
+        </div>        
+    </div>
+    <div class="form-group">
+        <label  for="password" >Password</label>
+        <input  formControlName="password"
+                id="password" 
+                type="password" 
+                placeholder="Enter password"
+                class="form-control col-md-7">
+        <div *ngIf="password.touched && password.invalid" class="alert alert-danger col-md-7">
+            <div *ngIf="password.errors.required">Password is required</div>
+        </div>        
+    </div>
+    <div class="form-group">
+        <label  for="confirmPaswd" >Password</label>
+        <input  formControlName="confirmPaswd"
+                id="confirmPaswd" 
+                type="password" 
+                placeholder="Enter password again"
+                class="form-control col-md-7">
+        <div *ngIf="confirmPaswd.touched && confirmPaswd.invalid" class="alert alert-danger col-md-7">
+            <div *ngIf="confirmPaswd.errors.required">Password is required</div>
+        </div>        
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf = "signedUpSucessfully">
+        <h6>Sucessfully Signup with Test App</h6>
+        <h6><a routerLink="">Login with new credentials</a></h6>
+    </div>
+<!--     <div class="alert alert-danger" role="alert" *ngIf = "form.invalid">
+        <div *ngIf="form.errors.status==409">
+            <h6>Userd Name or Password invalid</h6>
+        </div>
+    </div>  -->
+
+    <button class="btn btn-primary" [disabled]="!form.valid" [hidden]="signedUpSucessfully">SignUp</button>
+</form>

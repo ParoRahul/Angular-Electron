@@ -13,7 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { SettingsDbService } from './services/settings-db.service';
 import { MessageService } from './services/message.service';
 import { UserDbService } from './services/user-db.service';
-import { LoginoptionsComponent } from './loginoptions/loginoptions.component';
+import { SignupComponent } from './signup/signup.component';
+import { MessagebarComponent } from './messagebar/messagebar.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LoginoptionsComponent } from './loginoptions/loginoptions.component';
     ToolbarComponent,
     StatusbarComponent,
     LoginComponent,
-    LoginoptionsComponent,
+    SignupComponent,
+    MessagebarComponent,
   ],
   imports: [
     BrowserModule,

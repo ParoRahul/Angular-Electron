@@ -21,7 +21,7 @@ h3,h2,h4,h5,h6{
     margin: 5% auto; 
     border: 1px solid #fff;
     width: 30%; /* Could be more or less, depending on screen size */  
-    height: 60%;  
+    height: 75%;  
     display:block;
     position: relative;
     background-color: aliceblue;
@@ -30,10 +30,4 @@ h3,h2,h4,h5,h6{
 
 .btn{
     float: right;
-}
-
-.signup{
-    display: inline-block;
-    padding-top: 40px;
-    text-align: end
 }
