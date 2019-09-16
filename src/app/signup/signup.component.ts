@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDbService } from '../services/user-db.service';
+import { UserDbService } from '../services/user.db.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppError } from '../error/app.error';
 import { ConflictError } from '../error/conflict.error';
+import { BadRequestError } from '../error/badRequest.error';
 
 @Component({
   selector: 'app-signup',
@@ -41,29 +42,29 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getAllUserInfo()
+    this.service.getAllDocument()
     .subscribe(response=>{
       console.log(response)
-    },error=>{
-      console.log(error)
     })
   }
 
   submit( ){
-    this.service.putUserInfo({
-      _id:this.form.get('username').value,
-      name:this.form.get('name').value,
-      password:this.form.get('password').value
+    this.service.putDocument({ _id:this.form.get('username').value,
+                              name:this.form.get('name').value,
+                              password:this.form.get('password').value
     }).subscribe(response=>{
         console.log(response);
         this.signedUpSucessfully=true
     },(error: AppError)=>{
       if(error instanceof ConflictError){
-         //this.form.setErrors(error);
-         console.log('ddfd')
-         alert (" User id Already exists")
+         //this.form.setErrors(error.originalError);
+         alert ("User id Already exists")
       }
-      alert (" User id Already exists")
+      else if(error instanceof BadRequestError){
+        //this.form.setErrors(error.originalError);
+        alert (" Bad  Request")
+     }
+     else throw error;
     }) 
  }
 

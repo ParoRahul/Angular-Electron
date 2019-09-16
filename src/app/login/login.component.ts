@@ -1,6 +1,6 @@
 import { Component,OnInit, ɵConsole } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms'
-import { UserDbService } from '../services/user-db.service';
+import { UserDbService } from '../services/user.db.service';
 
 @Component({
   selector: 'app-login',
@@ -31,19 +31,11 @@ export class LoginComponent implements OnInit {
                                      Validators.minLength(5)]),
       password: new FormControl('',Validators.required)
     })
-    /*     
-    this.service.getAllUserInfo().
-    then((result)=>{
-      this.avaiableUser = result.total_rows;
-      console.log(result);
-    }).catch((err)=>{
-      this.userList=[];
-      this.avaiableUser =0;
-    }) */
+    
   }
 
   submit( ){
-    this.service.getUserInfo(this.username.value)
+    this.service.getDocument(this.username.value)
     .subscribe(response=>{
       console.log(response)
     },(error:any)=>{

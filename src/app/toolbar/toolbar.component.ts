@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolbarItem } from '../common/model/toolbar.item.model'
-import { SettingsDbService } from '../services/settings-db.service';
+import { SettingsDbService } from '../services/settings.db.service';
 
 
 @Component({
@@ -19,11 +19,7 @@ export class ToolbarComponent implements OnInit {
                                   { iconName:'search',role:'search',hidden:false}]
 
   constructor(service:SettingsDbService) { 
-  /*   let res=service.getsettings();
-    console.log("hi ")
-    console.log(res); 
-    service.getsettings();
-  */  
+ 
   }
 
   ngOnInit() {

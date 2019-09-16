@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,11 +10,12 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { StatusbarComponent } from './statusbar/statusbar.component';
 import { LoginComponent } from './login/login.component';
 
-import { SettingsDbService } from './services/settings-db.service';
+import { SettingsDbService } from './services/settings.db.service';
 import { MessageService } from './services/message.service';
-import { UserDbService } from './services/user-db.service';
+import { UserDbService } from './services/user.db.service';
 import { SignupComponent } from './signup/signup.component';
 import { MessagebarComponent } from './messagebar/messagebar.component';
+import { AppErrorHandler } from './error/app.error.handler';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { MessagebarComponent } from './messagebar/messagebar.component';
   providers: [
     SettingsDbService,
     MessageService,
-    UserDbService
+    UserDbService,
+    {provide:ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
 })
