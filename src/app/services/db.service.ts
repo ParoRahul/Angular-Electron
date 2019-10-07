@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import PouchDB from 'pouchdb';
+//import * as LocalStorage from 'pouchdb-adapter-localstorage';
 import { Observable, from,throwError  } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { AppError } from '../error/app.error';
@@ -7,13 +8,20 @@ import { NotFoundError } from '../error/notFound.error';
 import { ConflictError } from '../error/conflict.error';
 import { BadRequestError } from '../error/badRequest.error';
 
+//PouchDB.plugin(LocalStorage);
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
   private database:any;
   constructor( dbName:string ,dbPath:string) {
-      this.database = new PouchDB(dbName,{ prefix: dbPath});       
+      this.database = new PouchDB(dbName,{ 
+                                          prefix: dbPath,
+                                          auto_compaction: true,    // Only store latest records
+                                        });       
+      //this.database = new PouchDB(dbName);       
       this.database.info().then(function (result) {
         console.log(result);
       }).catch(function (err) {

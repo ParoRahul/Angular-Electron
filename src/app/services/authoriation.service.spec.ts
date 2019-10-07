@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SettingsDbService } from './settings.db.service';
+import { AuthoriationService } from './authoriation.service';
 
-describe('SettingsDbService', () => {
+describe('AuthoriationService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SettingsDbService = TestBed.get(SettingsDbService);
+    const service: AuthoriationService = TestBed.get(AuthoriationService);
     expect(service).toBeTruthy();
   });
 });

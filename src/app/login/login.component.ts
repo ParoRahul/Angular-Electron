@@ -1,6 +1,7 @@
-import { Component,OnInit, ɵConsole } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms'
-import { UserDbService } from '../services/user.db.service';
+import { AuthoriationService } from '../services/authoriation.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,11 @@ export class LoginComponent implements OnInit {
   userList:any[];
   avaiableUser:number;
   form: FormGroup;
-
-  constructor(private service:UserDbService) { 
+  public validLogin:boolean;
+  constructor(private service:AuthoriationService,
+              private router: Router ,
+              private route: ActivatedRoute ) { 
+    this.validLogin=true;            
     
   }
   
@@ -30,18 +34,25 @@ export class LoginComponent implements OnInit {
       username: new FormControl('',[ Validators.required,
                                      Validators.minLength(5)]),
       password: new FormControl('',Validators.required)
-    })
-    
+    })    
   }
 
   submit( ){
-    this.service.getDocument(this.username.value)
-    .subscribe(response=>{
-      console.log(response)
-    },(error:any)=>{
-        this.form.setErrors(error);
-        console.log(this.form)
-   }) 
+    console.log(this.form.value);
+    this.service.logIn(this.form.value)
+    .subscribe( result => {
+      if (result){
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl')
+        this.router.navigate([returnUrl||'home'])
+        this.validLogin=true
+      }
+      else
+         this.validLogin=false
+    })
+ }
+
+ goAnnonymous(){
+  console.log(this.form.value);
  }
 
 }

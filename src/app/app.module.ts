@@ -16,6 +16,9 @@ import { UserDbService } from './services/user.db.service';
 import { SignupComponent } from './signup/signup.component';
 import { MessagebarComponent } from './messagebar/messagebar.component';
 import { AppErrorHandler } from './error/app.error.handler';
+import { AuthoriationService } from './services/authoriation.service';
+import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { AppErrorHandler } from './error/app.error.handler';
     LoginComponent,
     SignupComponent,
     MessagebarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,9 @@ import { AppErrorHandler } from './error/app.error.handler';
     SettingsDbService,
     MessageService,
     UserDbService,
-    {provide:ErrorHandler, useClass: AppErrorHandler}
+    {provide:ErrorHandler, useClass: AppErrorHandler},
+    AuthoriationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

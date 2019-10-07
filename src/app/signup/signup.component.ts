@@ -15,7 +15,6 @@ export class SignupComponent implements OnInit {
   avaiableUser:number;
   signedUpSucessfully:boolean;
   form = new FormGroup({
-    name: new FormControl('',[ Validators.required,Validators.minLength(5)]),
     username: new FormControl('',[ Validators.required,Validators.minLength(5)]),
     password: new FormControl('',Validators.required),
     confirmPaswd: new FormControl('',Validators.required)
@@ -25,10 +24,6 @@ export class SignupComponent implements OnInit {
     this.signedUpSucessfully=false;
   }
   
-  get name(){
-    return this.form.get('name')
-  }
-
   get username(){
     return this.form.get('username')
   }
