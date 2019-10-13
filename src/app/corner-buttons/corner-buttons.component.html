@@ -1,9 +1,25 @@
-<i class="material-icons " (click)="onMinimize()" >remove</i>
-<i class="material-icons" 
-    *ngIf="isResized"
-    (click)="onResize()">filter_none</i>
-<i class="material-icons" 
-    *ngIf="! isResized" 
-    (click)="onMaximize()" >crop_square</i>
-<i class="material-icons close-btn" (click)="onClose()" >close</i>
+<div class="d-flex flex-row justify-content-center align-content-center h-100">
+    <div class="minimize" (click)="onMinimize()" >
+            <i class="material-icons ">remove</i>
+    </div>
+    <div class="resize" (click)="onResize()" >
+            <i class="material-icons" *ngIf="isResized" >filter_none</i>
+            <i class="material-icons" *ngIf="! isResized">crop_square</i>
+    </div>
+    <div class="close" (click)="onClose()" >
+            <i class="material-icons">close</i>
+    </div>
+    <!-- <mat-icon aria-hidden="false" color="accent">crop_square</mat-icon>   -->      
+    <!-- <button mat-icon-button (click)="onMinimize()" style="width: 36px;height: 30px;">
+            <mat-icon mat-icon-button aria-hidden="true" color="accent">remove</mat-icon>        
+    </button>
+
+    <button mat-icon-button (click)="onResize()" style="width: 36px;height: 30px;">
+            <mat-icon color="accent" *ngIf="isResized" >filter_none</mat-icon> 
+            <mat-icon color="accent" *ngIf="!isResized" >crop_square</mat-icon>    
+    </button>
+    <button mat-icon-button (click)="onClose()" >
+            <mat-icon color="accent">close</mat-icon>        
+    </button> -->            
+</div>
 

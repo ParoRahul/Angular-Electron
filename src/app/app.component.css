@@ -9,4 +9,6 @@
     font-weight: 50; 
     margin:0;
     padding:0;
+    position: absolute;
+    overflow: hidden;
 }

@@ -39,20 +39,8 @@ export class AuthoriationService {
           this.validLogin=false;
           return false;
      })
-    )  
-    /* this.database.get(credentials.username)
-    .then((response)=>{
-        if(response.password == credentials.password){
-          this.validLogin=true;          
-          localStorage.setItem('token',response);
-        }
-        else{
-          this.validLogin=false;
-        }
-    }).catch((error)=>{
-        console.log(error)
-        this.validLogin=false;
-    }) */
+    )
+      
   }
 
   public logout(){
@@ -64,11 +52,6 @@ export class AuthoriationService {
     if (!token)
         return false; 
     return true;    
-    /* let jwthelper = new JwtHelperService();
-    let expirationDate=jwthelper.getTokenExpirationDate(token);
-    let isExpiared = jwthelper.isTokenExpired(token);
-    console.log(`Expiration date ${expirationDate} and flag ${isExpiared}`);
-    return !isExpiared; */
   }
 
   public annonymousLogIn(){

@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import 'hammerjs';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +26,8 @@ import { AppErrorHandler } from './error/app.error.handler';
 import { AuthoriationService } from './services/authoriation.service';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { UsertoolComponent } from './toolbar/usertool/usertool.component';
+
 
 
 @NgModule({
@@ -28,13 +37,21 @@ import { AuthGuard } from './services/auth-guard.service';
     TitlebarComponent,
     ToolbarComponent,
     StatusbarComponent,
-    LoginComponent,
-    SignupComponent,
     MessagebarComponent,
     HomeComponent,
+    UsertoolComponent,
+    SignupComponent,
+    LoginComponent
   ],
+  entryComponents:[LoginComponent
+                   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatDialogModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule

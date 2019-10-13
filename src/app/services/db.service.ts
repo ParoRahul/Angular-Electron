@@ -11,9 +11,9 @@ import { BadRequestError } from '../error/badRequest.error';
 //PouchDB.plugin(LocalStorage);
 
 
-@Injectable({
+/* @Injectable({
   providedIn: 'root'
-})
+}) */
 export class DbService {
   private database:any;
   constructor( dbName:string ,dbPath:string) {

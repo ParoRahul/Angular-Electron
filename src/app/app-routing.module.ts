@@ -6,8 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 
-const routes: Routes = [  { path:'' , component:LoginComponent },
-                          { path:'home' , component:HomeComponent },
+const routes: Routes = [  
+                          { path:'' , component:HomeComponent },
                           { path:'createAccount' ,
                             component:SignupComponent,
                             canActivate:[AuthGuard] } 

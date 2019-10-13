@@ -1,3 +1,10 @@
-<img [src]="logoUrl" alt="App Logo" style="height:30px">
-<span class="comp-title" >{{appTitle}}</span>
-<app-corner-buttons></app-corner-buttons>
+<div class="d-flex flex-row justify-content-between align-content-center w-100 h-100" >
+    <div class="justify-content-start align-self-center ">
+        <img [src]="logoUrl" id="applogo" alt="App Logo" >
+    </div>
+    <div class="flex-grow-1 align-self-center text-center ">
+        <span class="align-middle text-white">{{appTitle}}</span>
+    </div>
+    <app-corner-buttons></app-corner-buttons>
+</div>
+
