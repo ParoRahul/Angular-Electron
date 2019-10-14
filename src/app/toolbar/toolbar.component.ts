@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ToolbarItem } from '../common/model/toolbar.item.model'
-import { SettingsDbService } from '../services/settings.db.service';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'; 
+import { LoginComponent } from 'src/app/login/login.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,19 +9,36 @@ import { SettingsDbService } from '../services/settings.db.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  upperToolItms:ToolbarItem [] = [{ iconName:'account_circle',role:'logIn',hidden:false}
-                                  ]
-  lowerToolItms:ToolbarItem [] = [{ iconName:'settings_applications',role:'settings',hidden:false},
-                                  { iconName:'lock_open',role:'lockApp',hidden:false},
-                                  { iconName:'fullscreen',role:'screenShot',hidden:false},
-                                  { iconName:'bug_report',role:'issueReport',hidden:false},
-                                  { iconName:'search',role:'search',hidden:false}]
-
-  constructor(service:SettingsDbService) { 
+  constructor(private dialog: MatDialog) { 
  
   }
 
   ngOnInit() {
+  
+  }
+
+  onLogIn(){
+    this.dialog.open(LoginComponent,{ disableClose: true })
+  }
+
+  onApplySettings(){
+
+  }
+
+  onLock(){
+
+  }
+
+  onCaptureScreen(){
+
+  }
+
+  onBugReporting(){
+
+  }
+
+  onSearch(){
+
   }
 
 }

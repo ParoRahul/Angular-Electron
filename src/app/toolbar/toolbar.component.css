@@ -1,7 +1,14 @@
 :host{
     grid-row: 2/3;
     grid-column: 1/2; 
-    background-color: var(--toolbar)
+    background-color:var(--toolbar)
+}
+
+.mat-icon-button  {
+    outline: none;
+}
+.mat-icon-button .mat-icon{
+    color:#fff;
 }
 /* :host{
     grid-row: 2/3;

@@ -11,7 +11,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CornerButtonsComponent } from './corner-buttons/corner-buttons.component';
 import { TitlebarComponent } from './titlebar/titlebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { StatusbarComponent } from './statusbar/statusbar.component';
@@ -26,25 +25,22 @@ import { AppErrorHandler } from './error/app.error.handler';
 import { AuthoriationService } from './services/authoriation.service';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
-import { UsertoolComponent } from './toolbar/usertool/usertool.component';
-
-
+import { CustomDialog } from './custom-dialog/custom-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CornerButtonsComponent,
     TitlebarComponent,
     ToolbarComponent,
     StatusbarComponent,
     MessagebarComponent,
     HomeComponent,
-    UsertoolComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    CustomDialog
   ],
-  entryComponents:[LoginComponent
-                   ],
+  entryComponents:[ LoginComponent,
+                    CustomDialog],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
