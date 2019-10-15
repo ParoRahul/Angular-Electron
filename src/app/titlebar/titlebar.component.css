@@ -9,6 +9,11 @@
     border: 1px solid var(--titlebar);
 } 
 
+#dragableRegion{
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+
 .mat-icon-button{
     width: 40px; 
     height: 30px; 

@@ -26,10 +26,8 @@ export class MainProcess {
                 "height": 700,
                 "minWidth": 600,
                 "minHeight": 400,
-                "skipTaskbar": false,
-                "frame": false,
+                "frame": true,
                 "parent": null,
-                "resizable": true,
                 "useContentSize": true,
                 "show": false,
                 "webPreferences": {
@@ -56,10 +54,6 @@ export class MainProcess {
         window.once('ready-to-show', () => {
                 if (window.getTitle() !== 'Confirm-Window')
                     window.show();
-        });
-
-        window.on('unresponsive', () => {
-            console.log(" Ready To show catched");
         });
 
         window.on('closed', () => {

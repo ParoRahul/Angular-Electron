@@ -21,10 +21,8 @@ var MainProcess = /** @class */ (function () {
             "height": 700,
             "minWidth": 600,
             "minHeight": 400,
-            "skipTaskbar": false,
-            "frame": false,
+            "frame": true,
             "parent": null,
-            "resizable": true,
             "useContentSize": true,
             "show": false,
             "webPreferences": {
@@ -47,9 +45,6 @@ var MainProcess = /** @class */ (function () {
         window.once('ready-to-show', function () {
             if (window.getTitle() !== 'Confirm-Window')
                 window.show();
-        });
-        window.on('unresponsive', function () {
-            console.log(" Ready To show catched");
         });
         window.on('closed', function () {
             console.log(" closed event catched");

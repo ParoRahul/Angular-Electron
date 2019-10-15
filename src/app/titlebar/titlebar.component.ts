@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { CustomDialog } from '../custom-dialog/custom-dialog.component';
-//const { remote } = (<any>window).require('electron');
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'app-titlebar',
@@ -14,7 +14,7 @@ export class TitlebarComponent implements OnInit {
   isResized:boolean;
   disableClose:boolean;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog ,private electronService: ElectronService) { }
 
   ngOnInit() {
       this.isResized=false;
@@ -24,14 +24,19 @@ export class TitlebarComponent implements OnInit {
   }
 
   onMinimize(){
-      console.log('Windows going to be minimize');
-      //remote.getCurrentWindow().minimize();
+      if(this.electronService.isElectronApp) 
+          this.electronService.remote.getCurrentWindow().minimize();
   }
 
   onResize(){
-      console.log('Windows going to be resized');
       this.isResized=!this.isResized;
-      //remote.getCurrentWindow().unmaximize();
+      if(this.electronService.isElectronApp) {
+          let currentWindow = this.electronService.remote.getCurrentWindow();
+          if(currentWindow.isMaximized())
+              currentWindow.unmaximize()
+          else
+              currentWindow.maximize()    
+      }
   }
 
   onClose(){
@@ -49,8 +54,9 @@ export class TitlebarComponent implements OnInit {
         console.log(`closing box with ${confirmed}`);
         this.disableClose = !confirmed;
         if (confirmed){
-            //remote.getCurrentWindow().close()
-            //need to close all dB service here 
+          if(this.electronService.isElectronApp) {
+              this.electronService.remote.getCurrentWindow().close();
+            }
             this.disableClose = true
         }
         else

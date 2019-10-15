@@ -27,6 +27,8 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { CustomDialog } from './custom-dialog/custom-dialog.component';
 
+import { NgxElectronModule } from 'ngx-electron';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,8 @@ import { CustomDialog } from './custom-dialog/custom-dialog.component';
     MatDialogModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxElectronModule
   ],
   providers: [
     SettingsDbService,
