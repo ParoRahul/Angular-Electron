@@ -1,4 +1,7 @@
-<!-- <app-titlebar></app-titlebar> -->
+<app-titlebar   [appTitle]="applicationTitle"
+                (winMinimize) = "onMinimize()"
+                (winResize) = "onResize()" 
+                (winClose) = "onClose()" ></app-titlebar>
 <app-toolbar></app-toolbar>
 <app-statusbar></app-statusbar>
 <router-outlet></router-outlet>

@@ -21,7 +21,7 @@ var MainProcess = /** @class */ (function () {
             "height": 700,
             "minWidth": 600,
             "minHeight": 400,
-            "frame": true,
+            "frame": false,
             "parent": null,
             "useContentSize": true,
             "show": false,

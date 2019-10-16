@@ -22,13 +22,13 @@ export class CustomDialog {
             this.confirmButtonText = data.buttonText.ok || this.confirmButtonText;
             this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
         }
-        if(data.dialogIconName){
+        /* if(data.dialogIconName){
           this.dialogIcon=true;
           this.dialogIconName = data.dialogIconName || this.dialogIconName;
         }
         else{
           this.dialogIcon=false;
-        }
+        } */
       }
   }
 

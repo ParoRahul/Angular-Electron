@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { CustomDialog } from '../custom-dialog/custom-dialog.component';
-import { ElectronService } from 'ngx-electron';
+import { Component, OnInit, Output , EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-titlebar',
@@ -9,59 +6,35 @@ import { ElectronService } from 'ngx-electron';
   styleUrls: ['./titlebar.component.css']
 })
 export class TitlebarComponent implements OnInit {
-  appTitle:string;
   logoUrl:string;
   isResized:boolean;
   disableClose:boolean;
 
-  constructor(private dialog: MatDialog ,private electronService: ElectronService) { }
+  @Input() appTitle:string;
+  @Output() winMinimize = new EventEmitter();
+  @Output() winResize = new EventEmitter();
+  @Output() winClose = new EventEmitter();
+
+
+  constructor() { }
 
   ngOnInit() {
       this.isResized=false;
-      this.appTitle='Angular-Electron';
       this.logoUrl='assets/logo.png'
-      this.disableClose=false;
   }
 
-  onMinimize(){
-      if(this.electronService.isElectronApp) 
-          this.electronService.remote.getCurrentWindow().minimize();
+  onMinimize(event){
+      this.winMinimize.emit(); 
   }
 
-  onResize(){
+  onResize(event){
       this.isResized=!this.isResized;
-      if(this.electronService.isElectronApp) {
-          let currentWindow = this.electronService.remote.getCurrentWindow();
-          if(currentWindow.isMaximized())
-              currentWindow.unmaximize()
-          else
-              currentWindow.maximize()    
-      }
+      this.winResize.emit(this.isResized);
   }
 
-  onClose(){
-      console.log('Windows going to be close');
+  onClose(event){
       this.disableClose=true;
-      const dialogRef = this.dialog.open(CustomDialog,{
-          data:{
-            message: 'Are you sure want to close the Application ?',
-            buttonText: {ok: 'Yes',cancel: 'No'},
-            dialogIconName :'warning'
-          }
-      });
-
-      dialogRef.afterClosed().subscribe((confirmed: boolean) => {
-        console.log(`closing box with ${confirmed}`);
-        this.disableClose = !confirmed;
-        if (confirmed){
-          if(this.electronService.isElectronApp) {
-              this.electronService.remote.getCurrentWindow().close();
-            }
-            this.disableClose = true
-        }
-        else
-            this.disableClose = false 
-      });
+      this.winClose.emit();
   }
 
 }
