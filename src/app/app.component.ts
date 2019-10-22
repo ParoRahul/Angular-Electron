@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ElectronService } from 'ngx-electron';
 import { CustomDialog } from './custom-dialog/custom-dialog.component';
-
+import { Menu } from './common/model/app.config.model';
+import { AppConfig } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ import { CustomDialog } from './custom-dialog/custom-dialog.component';
 export class AppComponent {
   
   applicationTitle:string = 'Angular-Electron';
+  menuitems: Menu[] = AppConfig.menuConfig;  
+
   
   constructor(  private dialog: MatDialog ,
                 private electronService: ElectronService) { 

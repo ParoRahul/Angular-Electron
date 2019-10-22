@@ -2,6 +2,10 @@
                 (winMinimize) = "onMinimize()"
                 (winResize) = "onResize()" 
                 (winClose) = "onClose()" ></app-titlebar>
+
 <app-toolbar></app-toolbar>
+
+<app-menubar [menuConfig]='menuitems' ></app-menubar> 
+
 <app-statusbar></app-statusbar>
 <router-outlet></router-outlet>

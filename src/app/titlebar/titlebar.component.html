@@ -2,7 +2,8 @@
     <div class="justify-content-start align-self-center ">
         <img [src]="logoUrl" id="applogo" alt="App Logo" >
     </div>
-    <div class="flex-grow-1 align-self-center text-center "  id ="dragableRegion" >
+    <div class="flex-grow-1 align-self-center text-center "  id ="dragableRegion" 
+            ng-dblclick = "onResize($event)">
         <span class="align-middle text-white">{{appTitle}}</span>
     </div>
     <button mat-icon-button (click)="onMinimize($event)" >

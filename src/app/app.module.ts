@@ -28,6 +28,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { CustomDialog } from './custom-dialog/custom-dialog.component';
 
 import { NgxElectronModule } from 'ngx-electron';
+import { MenubarComponent } from './menubar/menubar.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { NgxElectronModule } from 'ngx-electron';
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    CustomDialog
+    CustomDialog,
+    MenubarComponent
   ],
   entryComponents:[ LoginComponent,
                     CustomDialog],

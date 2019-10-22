@@ -11,6 +11,7 @@
     --danger:#ce5656;
     --tool-bar-width: 40px;
     --title-bar-height: 25px;
+    --menu-bar-height: 20px;
     --status-bar-height: 20px;
     --tab-bar-height: 25px;
 }  
@@ -20,6 +21,12 @@
     padding:0;
     box-sizing: border-box;
     user-select: none;
+}
+
+ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
 }
 
 .form-control{

@@ -1,0 +1,38 @@
+<ng-container *ngIf ="menuConfig.length > 0 ">
+    <ul class="d-inline-flex align-items-center m-0 p-0 ">
+        <ng-container *ngFor="let menu of menuConfig">
+        <li style="height: 20px; width: 30px;"
+            (mouseover)="menu.expanded=true" (mouseout)="menu.expanded=false">
+            <label class="m-0 px-2 text-dark" style="height: 20px; font-size: 12px;">{{menu.label}}</label>
+            <ul *ngIf="hasSubmenu(menu)" class="d-block" 
+                [ngStyle]="{'visibility':menu.expanded ? 'visible':'hidden'}">
+                <ng-container *ngTemplateOutlet="menuTemplate; context:{node:menu}"></ng-container>
+            </ul>
+        </li>
+        </ng-container>
+    </ul>    
+</ng-container>
+    
+<ng-template #menuTemplate let-node="node">
+    <ng-container *ngFor="let item of node.submenu">
+    <li *ngIf="item.role !=='separator'" [ngStyle]="styleMenuTitle(item)"
+        (mouseover)="item.expanded=true" (mouseout)="item.expanded=false"
+        (click)="onMenuClick(item)">
+        <label class="d-inline-flex align-items-center text-white m-0 p-0 w-100 h-100" >
+            <span class="px-3 text-left" [style.font-size]="'12px'">{{item.label}}</span>
+            <span class="px-3 text-right flex-grow-1"  [style.font-size]="'12px'"
+                    [ngStyle]="{'color':item.expanded ? '#fff':'#999'}" 
+                    *ngIf="!hasSubmenu(item)">{{item.hkey}}</span>
+            <span class="px-2 text-right flex-grow-1"  *ngIf="hasSubmenu(item)">
+                <i class="material-icons" [style.font-size]="'12px'" >keyboard_arrow_right</i>
+            </span>
+        </label>    
+        <ul *ngIf="hasSubmenu(item)" class="position-relative m-0 p-0" [ngStyle]="styleSubmenu(item)">
+            <ng-container *ngTemplateOutlet="menuTemplate; context:{node:item}"></ng-container>
+        </ul>
+    </li>
+    <li *ngIf="item.role==='separator'" [ngStyle]="styleMenuTitle(item)">
+        <hr [ngStyle]="styleSeperator()">
+    </li>    
+    </ng-container>
+</ng-template>
