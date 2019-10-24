@@ -4,9 +4,8 @@
 }
 
 #applogo{
-    height:25px;
-    width:40px;
-    border: 1px solid var(--titlebar);
+    height:23px;
+    width:23px;
 } 
 
 #dragableRegion{
@@ -22,14 +21,14 @@
 }
 
 .mat-icon-button .mat-icon{
-    width: 40px; 
+    width: 50px; 
     height: 25px; 
     font-size: 15px;  
     color:#fff;
 }
 
 .mat-icon-button:hover .mat-icon{
-    background-color: #777;
+    background-color: #666;
 }
 
 #closebtn:hover .mat-icon{

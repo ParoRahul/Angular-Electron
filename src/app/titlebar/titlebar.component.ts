@@ -20,7 +20,7 @@ export class TitlebarComponent implements OnInit {
 
   ngOnInit() {
       this.isResized=false;
-      this.logoUrl='assets/logo.png'
+      this.logoUrl='assets/app_white.png'
   }
 
   onMinimize(event){

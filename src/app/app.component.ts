@@ -50,7 +50,10 @@ export class AppComponent {
                   }
               }
       });
-      
+  }
+
+  onMenuClick($event){
+      console.log($event);
   }
 
 }

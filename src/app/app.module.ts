@@ -8,6 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { CustomDialog } from './custom-dialog/custom-dialog.component';
 
 import { NgxElectronModule } from 'ngx-electron';
 import { MenubarComponent } from './menubar/menubar.component';
+import { TabbarComponent } from './tabbar/tabbar.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { MenubarComponent } from './menubar/menubar.component';
     SignupComponent,
     LoginComponent,
     CustomDialog,
-    MenubarComponent
+    MenubarComponent,
+    TabbarComponent
   ],
   entryComponents:[ LoginComponent,
                     CustomDialog],
@@ -52,6 +55,7 @@ import { MenubarComponent } from './menubar/menubar.component';
     MatButtonModule,
     MatTooltipModule,
     MatDialogModule,
+    MatTabsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

@@ -1,8 +1,8 @@
-<div class="d-flex flex-row justify-content-between align-content-center bg-dark w-100 h-100" >
-    <div class="justify-content-start align-self-center ">
-        <img [src]="logoUrl" id="applogo" alt="App Logo" >
+<div class="d-flex flex-row  align-content-center bg-dark w-100 h-100" >
+    <div class="px-2 " [style.width]="'40px'">
+        <i class="material-icons" style="color:cadetblue" >bubble_chart</i>
     </div>
-    <div class="flex-grow-1 align-self-center text-center "  id ="dragableRegion" 
+    <div class="flex-grow-1 align-self-center text-center"  id ="dragableRegion" 
             ng-dblclick = "onResize($event)">
         <span class="align-middle text-white">{{appTitle}}</span>
     </div>

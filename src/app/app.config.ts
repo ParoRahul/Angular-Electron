@@ -1,59 +1,122 @@
 export const AppConfig ={
     menuConfig:[
         {
-            label: "file",
-            role: "file",
+            label: "Masters",
+            role: "Masters",
             submenu: [
                 {
-                    label: "Open file...",
-                    role: "newimage"
-                },
-                {
-                    label: "Line",
-                    role: "separator"
-                },
-                {
-                    label: "Folder",
-                    role: "Open Folder...",
+                    label: "Ledger Master",
+                    role: "Masters",
                     submenu: [
                         {
-                            label: "item121",
-                            role: "import_file",
-                            submenu: [
-                                {
-                                    label: "item1211",
-                                    role: "import_file"
-                                },
-                                {
-                                    label: "item1212",
-                                    role: "import_folder"
-                                }
-                            ]
+                            label:"New Ledger",
+                            role:"Ledger Master"
                         },
                         {
-                            label: "item122",
-                            role: "import_folder"
+                            label:"Modify Ledger",
+                            role:"Ledger Master"
+                        },
+                        {
+                            label:"Delete Ledger",
+                            role:"Ledger Master"
+                        },
+                        {
+                            label:"Line",
+                            role:"separator"
+                        },
+                        {
+                            label:"New Sale",
+                            role:"Ledger Master"
+                        },
+                        {
+                            label:"Modify Sale",
+                            role:"Ledger Master"
+                        },
+                        {
+                            label:"Delete Sale",
+                            role:"Ledger Master"
+                        },
+                        {
+                            label:"Line",
+                            role:"separator"
+                        },
+                        {
+                            label:"New Purchase",
+                            role:"Ledger Master"
+                        },
+                        {
+                            label:"Modify Purchase",
+                            role:"Ledger Master"
+                        },
+                        {
+                            label:"Delete Purchase",
+                            role:"Ledger Master"
                         }
                     ]
                 },
                 {
-                    label: "item13",
-                    role: "export",
+                    label: "Account Group",
+                    role: "Masters"
+                },
+                {
+                    label: "Inventory Master",
+                    role: "Master",
                     submenu: [
                         {
-                            label: "item131",
-                            role: "import_file"
+                            label: "Item Master",
+                            role: "Inventory Master",
                         },
                         {
-                            label: "item132",
-                            role: "import_folder"
+                            label: "Company Master",
+                            role: "Inventory Master"
+                        },
+                        {
+                            label: "HSN/SAC Master",
+                            role: "Inventory Master"
                         }
+
                     ]
                 },
                 {
-                    label: "item14",
-                    role: "project_settings"
+                    label: "Rate & Discount Master",
+                    role: "Master"
                 }
+            ]
+        },
+        {
+            label: "Transactions",
+            role: "Transactions",
+            submenu:[
+                {
+                    label:"Sale",
+                    role:"Transactions"
+                },
+                {
+                    label:"Purchase",
+                    role:"Transactions",
+                    submenu:[
+                        {
+                            label:"Bill",
+                            role:"Purchase"
+                        },
+                        {
+                            label:"Chalan",
+                            role:"Purchase"
+                        },
+                        {
+                            label:"Line",
+                            role:"separator"
+                        },
+                        {
+                            label:"Modify Bill",
+                            role:"Purchase"
+                        },
+                        {
+                            label:"Modify Chalan",
+                            role:"Purchase"
+                        }
+                    ]
+                },
             ]
         }
     ]

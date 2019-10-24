@@ -9,7 +9,7 @@ import { Menu } from '../common/model/app.config.model';;
 export class MenubarComponent implements OnInit {
 
   @Input() menuConfig:Menu[];
-  @Output() MenuClick = new EventEmitter<Menu>();
+  @Output() menuClicked = new EventEmitter<Menu>();
 
   constructor() { }
 
@@ -23,11 +23,12 @@ export class MenubarComponent implements OnInit {
   }
 
   onMenuClick(menu:Menu){
+    console.log(menu)
     if(menu.role==='separator')
         return; 
     if (this.hasSubmenu(menu)) 
         return;   
-    this.MenuClick.emit(menu)
+    this.menuClicked.emit(menu)
   }
 
   styleMenuTitle(menu:Menu){
@@ -37,7 +38,8 @@ export class MenubarComponent implements OnInit {
         'padding':'0 4px',
         'width':'250px',
         'height':'1px',
-        'background-color':'#555'
+        'background-color':'#555',
+        'z-index':'inherit'
       }
     else
       return {
@@ -46,7 +48,8 @@ export class MenubarComponent implements OnInit {
         'width':'250px',
         'height':'24px',
         'background-color': menu.expanded ? '#666':'#555',
-        'box-shadow':'0 4px 4px #111'
+        'box-shadow':'0 4px 4px #111',
+        'z-index':'inherit'
       }
   }
 
@@ -56,7 +59,8 @@ export class MenubarComponent implements OnInit {
       'left':'250px',
       'top': '-24px',
       'box-shadow':'0 4px 4px #111',
-      'visibility':menu.expanded ? 'visible':'hidden'
+      'visibility':menu.expanded ? 'visible':'hidden',
+      'z-index':'inherit'
     }
   }
 

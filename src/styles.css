@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/purple-green.css";
 :root {
-    --toolbar:#363636;
+    --toolbar:#222;
     --titlebar: #262626; 
     --titlebarhover:#565656;
     --statusbar:#2c3e50;
@@ -53,5 +53,21 @@ ul{
     margin-bottom: 0;
     padding-top:0;
     padding-bottom: 0;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: lighter;
+  font-style: normal;
+  font-size: 24px;  
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
