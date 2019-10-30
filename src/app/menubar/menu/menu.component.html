@@ -1,0 +1,18 @@
+<li *ngIf="!isSeparator"  [ngClass]="expand? 'menuTitle':'d-none'"
+    (mouseover)="onHover()" (mouseout)="onHoverout()" (click)="onMenuClick($event)">
+        <label class="d-inline-flex align-items-center menuTitle">
+            <span class="px-3 text-left" [style.font-size]="'12px'">{{config.label}}</span>
+            <span *ngIf="hasHkey" class="px-3 text-right">{{config.hkey}}</span>
+            <span class="px-2 text-right flex-grow-1" *ngIf="hasSubmenu">
+                <i class="material-icons" [style.font-size]="'12px'" >keyboard_arrow_right</i>
+            </span>
+        </label>
+        <ul class="d-block position-relative submenu" *ngIf="hasSubmenu">
+            <ng-container *ngFor="let Submenu of config.submenu">
+                    <menu [config]="Submenu" [parent]="config.label"></menu>
+            </ng-container>
+        </ul>
+</li>
+<li *ngIf="isSeparator" class="position-relative" [ngClass]="expand ? 'seperator':'d-none'" >
+    <hr>
+</li>

@@ -1,77 +1,53 @@
-import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
-import { Menu } from '../common/model/app.config.model';;
+import { Component, Input, AfterViewInit, QueryList, ViewChildren,ElementRef, HostListener } from '@angular/core';
+import { MenuTemplate } from '../common/model/menu.model';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
   selector: 'app-menubar',
   templateUrl: './menubar.component.html',
   styleUrls: ['./menubar.component.css']
 })
-export class MenubarComponent implements OnInit {
+export class MenubarComponent implements AfterViewInit {
 
-  @Input() menuConfig:Menu[];
-  @Output() menuClicked = new EventEmitter<Menu>();
-
-  constructor() { }
-
-  ngOnInit() {
+  @HostListener('document:click',['$event']) onClick(event:MouseEvent){
+    //console.log('From HostListener ')
+    if ( ! this.elRef.nativeElement.contains(event.target))
+        this.menuBarExpanded && this.collapseall() 
   }
 
-  hasSubmenu(menu:Menu) :boolean{
-    if (menu.hasOwnProperty('submenu'))
-        return menu.submenu.length > 0
-    return false    
+  @Input() menuConfig:MenuTemplate[];
+
+  @ViewChildren(MenuComponent) menus: QueryList<MenuComponent>;
+
+  private menuBarExpanded:boolean;
+
+  constructor(private elRef:ElementRef) { 
+    
   }
 
-  onMenuClick(menu:Menu){
-    console.log(menu)
-    if(menu.role==='separator')
-        return; 
-    if (this.hasSubmenu(menu)) 
-        return;   
-    this.menuClicked.emit(menu)
+  ngAfterViewInit() {
+    //console.log(` Legth of menus ${this.menus.length}`)
+    this.menuBarExpanded=false;
+    this.collapseall();
   }
 
-  styleMenuTitle(menu:Menu){
-    if(menu.role==='separator')
-      return {
-        'margin':'0',
-        'padding':'0 4px',
-        'width':'250px',
-        'height':'1px',
-        'background-color':'#555',
-        'z-index':'inherit'
-      }
-    else
-      return {
-        'margin':'0',
-        'padding':'0',
-        'width':'250px',
-        'height':'24px',
-        'background-color': menu.expanded ? '#666':'#555',
-        'box-shadow':'0 4px 4px #111',
-        'z-index':'inherit'
-      }
+  onMenuBarClick(label:string){
+    //console.log(`From MenuBar: menu click for ${label}`)
+    this.menuBarExpanded=true;
+    this.menus.toArray().forEach(item=>{
+          item.expand= (item.parent==label)? !item.expand:false;
+    });
+  } 
+  
+  collapseall():void{
+    //console.log(' Collapse all Called from menubar')
+    this.menuBarExpanded=false
+    this.menus.toArray().forEach((item)=>item.collapseMenu())
   }
 
-  styleSubmenu(menu:Menu){
-    return {
-      'width':'250px',
-      'left':'250px',
-      'top': '-24px',
-      'box-shadow':'0 4px 4px #111',
-      'visibility':menu.expanded ? 'visible':'hidden',
-      'z-index':'inherit'
-    }
-  }
-
-  styleSeperator(){
-    return {
-      'margin':'0',
-      'padding':'0',
-      'height':'1px',
-      'broder':'0',
-      'background':'#999'
-    }
+  get isMenuBarHoverd():boolean{
+    let hoverdItem=this.menus.filter((item)=>item.isHovered)
+    return hoverdItem.length > 0 ? true:false
   }
 
 }

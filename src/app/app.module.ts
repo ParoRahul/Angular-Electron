@@ -31,6 +31,7 @@ import { CustomDialog } from './custom-dialog/custom-dialog.component';
 import { NgxElectronModule } from 'ngx-electron';
 import { MenubarComponent } from './menubar/menubar.component';
 import { TabbarComponent } from './tabbar/tabbar.component';
+import { MenuComponent } from './menubar/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TabbarComponent } from './tabbar/tabbar.component';
     LoginComponent,
     CustomDialog,
     MenubarComponent,
-    TabbarComponent
+    TabbarComponent,
+    MenuComponent
   ],
   entryComponents:[ LoginComponent,
                     CustomDialog],
