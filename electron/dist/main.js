@@ -25,6 +25,7 @@ var MainProcess = /** @class */ (function () {
             "parent": null,
             "useContentSize": true,
             "show": false,
+            "icon": path.join(__dirname, 'app_taskbar_icon.png'),
             "webPreferences": {
                 "nodeIntegration": true,
                 "nodeIntegrationInWorker": true

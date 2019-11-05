@@ -32,6 +32,9 @@ import { NgxElectronModule } from 'ngx-electron';
 import { MenubarComponent } from './menubar/menubar.component';
 import { TabbarComponent } from './tabbar/tabbar.component';
 import { MenuComponent } from './menubar/menu/menu.component';
+import { TabComponent } from './tabbar/tab/tab.component';
+import { DynamicCompDirective } from './tabbar/dynamic-comp.directive';
+
 
 @NgModule({
   declarations: [
@@ -46,10 +49,13 @@ import { MenuComponent } from './menubar/menu/menu.component';
     CustomDialog,
     MenubarComponent,
     TabbarComponent,
-    MenuComponent
+    MenuComponent,
+    TabComponent,
+    DynamicCompDirective
   ],
   entryComponents:[ LoginComponent,
-                    CustomDialog],
+                    CustomDialog ,
+                    TabComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

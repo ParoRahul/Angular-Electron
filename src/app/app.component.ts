@@ -7,6 +7,7 @@ import { AppConfig } from './app.config';
 import { MenuService } from './menubar/menu.service';
 import { Subscription } from 'rxjs';
 import { MenubarComponent } from './menubar/menubar.component';
+import { TabbarComponent } from './tabbar/tabbar.component';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,8 @@ export class AppComponent implements AfterViewInit,OnDestroy{
 
     @ViewChild(MenubarComponent,{static:true}) menuBar;
 
+    @ViewChild(TabbarComponent,{static:true}) tabBar;
+
     constructor(  private dialog: MatDialog ,
                 private electronService: ElectronService,
                 private menuservice:MenuService) { }
@@ -29,7 +32,8 @@ export class AppComponent implements AfterViewInit,OnDestroy{
         this.menuSubscription = this.menuservice.getTemplate().subscribe(template => {
             if (template) {
                 console.log(template);
-                this.menuservice.clearTemplate();
+                this.tabBar.openTab(template.label);
+                //this.menuservice.clearTemplate();
                 this.menuBar.collapseall();
             } 
         });      
@@ -39,7 +43,6 @@ export class AppComponent implements AfterViewInit,OnDestroy{
         this.menuSubscription.unsubscribe();
     }
                                 
-
     onMinimize(){
         if(this.electronService.isElectronApp) 
             this.electronService.remote.getCurrentWindow().minimize();

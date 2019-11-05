@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginComponent } from '../login/login.component';
-import { SignupComponent } from '../signup/signup.component';
-import { HomeComponent } from '../home/home.component';
+import { Component, OnInit,ViewChild,ComponentFactoryResolver } from '@angular/core';
+import { TabComponent } from './tab/tab.component';
+import { DynamicCompDirective } from './dynamic-comp.directive';
 
 @Component({
   selector: 'app-tabbar',
@@ -10,24 +9,46 @@ import { HomeComponent } from '../home/home.component';
 })
 export class TabbarComponent implements OnInit {
 
-  public dynamicTabs = [
-    {
-        label: 'User Information',
-        component: LoginComponent
-    },
-    {
-        label: 'Payment',
-        component: SignupComponent
-    },
-    {
-        label: 'Thank You',
-        component: HomeComponent
-    }
-];
+  private dynamicTabs:TabComponent[] = [];
 
-  constructor() { }
+  @ViewChild(DynamicCompDirective,{static:true}) tabtemplate: DynamicCompDirective;
+  
+  constructor(private resolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
+    let componentFactory = this.resolver.resolveComponentFactory(TabComponent);
+    let viewContainerRef = this.tabtemplate.container;
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+    const instance: TabComponent = componentRef.instance as TabComponent;
+    instance.title = 'Home';
+    instance.isCloseable=false;
+    instance.active=true;
+    this.dynamicTabs.push(componentRef.instance as TabComponent);
+  }
+
+  openTab(title: string){
+    console.log('OpenTab called')
+    let componentFactory = this.resolver.resolveComponentFactory(TabComponent);
+    let viewContainerRef = this.tabtemplate.container;
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+    const instance: TabComponent = componentRef.instance as TabComponent;
+    instance.title = title;
+    instance.isCloseable=true;
+    this.dynamicTabs.push(componentRef.instance as TabComponent);
+    this.selectTab(this.dynamicTabs[this.dynamicTabs.length -1])
+  }
+
+  selectTab(tab){
+    //console.log(` tab title is ${tab.title}`)
+    this.dynamicTabs.forEach(item=>{
+      //console.log(` item title is ${item.title}`)
+      if (item.title == tab.title){
+          item.active=true
+      }
+      else{
+        item.active=false
+      } 
+    })
   }
 
 }

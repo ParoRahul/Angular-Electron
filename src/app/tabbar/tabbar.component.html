@@ -1,8 +1,12 @@
-<div class="bg-dark">
-<mat-tab-group>
-    <mat-tab *ngFor="let tab of dynamicTabs" label="{{tab.label}}">
-        <ng-container *ngComponentOutlet="tab.component">
-        </ng-container>
-    </mat-tab>
-</mat-tab-group>
+<div class="d-flex flex-row text-white align-content-center tabBar" >
+    <ng-container *ngFor=" let tab of dynamicTabs ">
+        <div class="d-inline-flex align-items-center" [ngClass]="tab.active? 'bg-active':'bg-inactive'" >
+            <span class="px-3" (click)="selectTab(tab)" >{{tab.title}} </span>
+            <span class="px-2 text-right" *ngIf="isCloseable">
+                <i class="material-icons" [style.font-size]="'14px'" >close</i>
+            </span>
+        </div>
+    </ng-container>
 </div>
+
+<ng-template DynamicComponent ></ng-template>
