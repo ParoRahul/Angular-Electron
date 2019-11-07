@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'; 
 import { LoginComponent } from 'src/app/login/login.component';
+import { DialogService } from '../services/dialog.service'
 
 @Component({
   selector: 'app-toolbar',
@@ -9,16 +10,17 @@ import { LoginComponent } from 'src/app/login/login.component';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { 
- 
-  }
+  /* constructor(private dialog: MatDialog) { } */
+
+  constructor(private dialog: DialogService) { }
 
   ngOnInit() {
   
   }
 
   onLogIn(){
-    this.dialog.open(LoginComponent,{ disableClose: true })
+    /* this.dialog.open(LoginComponent,{ disableClose: true }) */
+    this.dialog.openDialog(LoginComponent)
   }
 
   onApplySettings(){

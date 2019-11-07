@@ -9,7 +9,7 @@ import { DynamicCompDirective } from './dynamic-comp.directive';
 })
 export class TabbarComponent implements OnInit {
 
-  private dynamicTabs:TabComponent[] = [];
+  dynamicTabs:TabComponent[] = [];
 
   @ViewChild(DynamicCompDirective,{static:true}) tabtemplate: DynamicCompDirective;
   

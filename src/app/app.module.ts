@@ -34,7 +34,10 @@ import { TabbarComponent } from './tabbar/tabbar.component';
 import { MenuComponent } from './menubar/menu/menu.component';
 import { TabComponent } from './tabbar/tab/tab.component';
 import { DynamicCompDirective } from './tabbar/dynamic-comp.directive';
-
+/* import { DialogModule } from './dialog/dialog.module'; */
+import { InsertionDirective } from './dialog/insertion.directive';
+import { DialogComponent } from './dialog/dialog.component';
+import { DialogService } from './services/dialog.service';
 
 @NgModule({
   declarations: [
@@ -51,10 +54,13 @@ import { DynamicCompDirective } from './tabbar/dynamic-comp.directive';
     TabbarComponent,
     MenuComponent,
     TabComponent,
-    DynamicCompDirective
+    DynamicCompDirective,
+    InsertionDirective,
+    DialogComponent
   ],
   entryComponents:[ LoginComponent,
                     CustomDialog ,
+                    DialogComponent,
                     TabComponent],
   imports: [
     BrowserModule,
@@ -67,7 +73,8 @@ import { DynamicCompDirective } from './tabbar/dynamic-comp.directive';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxElectronModule
+    NgxElectronModule,
+    
   ],
   providers: [
     SettingsDbService,
@@ -75,7 +82,8 @@ import { DynamicCompDirective } from './tabbar/dynamic-comp.directive';
     UserDbService,
     {provide:ErrorHandler, useClass: AppErrorHandler},
     AuthoriationService,
-    AuthGuard
+    AuthGuard,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })
