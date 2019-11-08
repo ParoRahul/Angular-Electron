@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild,ComponentFactoryResolver } from '@angular/core';
 import { TabComponent } from './tab/tab.component';
-import { DynamicCompDirective } from './dynamic-comp.directive';
+import { DynamicCompDirective } from '../common/dynamic-comp.directive';
 
 @Component({
   selector: 'app-tabbar',

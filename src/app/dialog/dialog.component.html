@@ -1,5 +1,6 @@
 <div class="overlay" (click)="onOverlayClicked($event)">
-    <div class="dialog" (click)="onDialogClicked($event)">
-        <ng-template appInsertion> </ng-template>
+    <div class="dialog" (click)="onDialogClicked($event)"  
+        [style.width.px]="dialogWidth" [style.height.px]="dialogHeight">
+        <ng-template DynamicComponent> </ng-template>
     </div>
 </div>

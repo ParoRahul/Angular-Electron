@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild,Input } from '@angular/core';
 import { ComponentFactoryResolver } from '@angular/core';
-import { DynamicCompDirective } from '../dynamic-comp.directive';
+import { DynamicCompDirective } from '../../common/dynamic-comp.directive';
 import { TabScheduler } from '../../services/tab.scheduler.service';
 @Component({
   selector: 'app-tab',

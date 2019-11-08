@@ -6,18 +6,28 @@
             ng-dblclick = "onResize($event)">
         <span class="align-middle text-white">{{appTitle}}</span>
     </div>
-    <button mat-icon-button (click)="onMinimize($event)" >
+    <!-- <button mat-icon-button (click)="onMinimize($event)" >
             <mat-icon >remove</mat-icon>        
-    </button>
+    </button> -->
 
-    <button mat-icon-button (click)="onResize($event)">
+    <!-- <button mat-icon-button (click)="onResize($event)">
             <mat-icon *ngIf="isResized" >filter_none</mat-icon>
             <mat-icon *ngIf="!isResized" >crop_din</mat-icon>           
-    </button>
+    </button> -->
     
-    <button mat-icon-button  id="closebtn"     
+    <!-- <button mat-icon-button  id="closebtn"     
             (click)="onClose($event)" >
             <mat-icon >close</mat-icon>        
-    </button>           
+    </button>   -->
+    <button (click)="onMinimize($event)" >       
+        <i class="material-icons" >remove</i>   
+    </button>
+    <button  (click)="onResize($event)">
+        <i class="material-icons" *ngIf="isResized" >filter_none</i>   
+        <i class="material-icons" *ngIf="!isResized" >crop_din</i>             
+    </button>  
+    <button id="closebtn" (click)="onClose($event)" >
+            <i class="material-icons">close</i>
+    </button>       
 </div>
 

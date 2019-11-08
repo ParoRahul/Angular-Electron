@@ -1,11 +1,12 @@
 import { Component,OnDestroy,ViewChild,AfterViewInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+/* import { MatDialog } from '@angular/material'; */
 import { ElectronService } from 'ngx-electron';
+import { Subscription } from 'rxjs';
 import { CustomDialog } from './custom-dialog/custom-dialog.component';
 import { MenuTemplate } from './common/model/menu.model';
 import { AppConfig } from './app.config';
 import { MenuService } from './menubar/menu.service';
-import { Subscription } from 'rxjs';
+
 import { MenubarComponent } from './menubar/menubar.component';
 import { TabbarComponent } from './tabbar/tabbar.component';
 
@@ -24,7 +25,7 @@ export class AppComponent implements AfterViewInit,OnDestroy{
 
     @ViewChild(TabbarComponent,{static:true}) tabBar;
 
-    constructor(  private dialog: MatDialog ,
+    constructor(  /* private dialog: MatDialog , */
                 private electronService: ElectronService,
                 private menuservice:MenuService) { }
 
