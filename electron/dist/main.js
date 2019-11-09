@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
+var PouchDB = require("pouchdb");
 var path = require("path");
 var url = require("url");
 var MainProcess = /** @class */ (function () {
@@ -13,6 +14,7 @@ var MainProcess = /** @class */ (function () {
             electron_1.app.quit();
         }
         //app.setAppLogsPath(MainProcess.logpath);
+        this.Dblocation = 'D:/node/angular/PouchDB';
     }
     MainProcess.prototype.createWindow = function (winTitle) {
         var window = new electron_1.BrowserWindow({
@@ -109,6 +111,41 @@ var MainProcess = /** @class */ (function () {
                     event.reply("window.addEventListener." + eventName, { requestId: requestId });
                 });
             }
+        });
+        electron_1.ipcMain.on('document-insert', function (event, item) {
+            console.log(item);
+            var schema = path.join(_this.Dblocation, item.schema);
+            var database = new PouchDB(schema, { auto_compaction: true });
+            database.put(item.document).then(function (result) {
+                console.log(result);
+                event.reply('insert-sucess', result);
+            }).catch(function (error) {
+                event.reply('insert-fail', error);
+                console.log(error);
+            }).finally(function () { return database.close(); });
+        });
+        electron_1.ipcMain.on('document-retrive', function (event, item) {
+            var schema = path.join(_this.Dblocation, item.schema);
+            var database = new PouchDB(schema, { auto_compaction: true });
+            database.get(item.id)
+                .then(function (result) {
+                event.reply('retrival-sucess', result);
+            }).catch(function (error) {
+                event.reply('retrival-fail', error);
+                console.log(error);
+            }).finally(function () { return database.close(); });
+        });
+        electron_1.ipcMain.on('document-delete', function (event, item) {
+            var schema = path.join(_this.Dblocation, item.schema);
+            var database = new PouchDB(schema, { auto_compaction: true });
+            database.remove(item.document)
+                .then(function (result) {
+                event.reply('delete-sucess', result);
+            }).catch(function (error) {
+                event.reply('delete-fail', error);
+                console.log(error);
+            });
+            database.close();
         });
         electron_1.app.on('quit', function (event, exitCode) {
             console.log(" Application is going to be Exit with code " + exitCode);

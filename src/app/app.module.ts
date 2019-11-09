@@ -41,6 +41,7 @@ import { CustomDialog } from './custom-dialog/custom-dialog.component';
 import { DynamicCompDirective } from './common/dynamic-comp.directive';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogService } from './services/dialog.service';
+import { ElectronConnector } from './services/electron.service';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { DialogService } from './services/dialog.service';
     {provide:ErrorHandler, useClass: AppErrorHandler},
     AuthoriationService,
     AuthGuard,
-    DialogService
+    DialogService,
+    ElectronConnector
   ],
   bootstrap: [AppComponent]
 })

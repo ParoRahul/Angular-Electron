@@ -1,4 +1,7 @@
 import { app, BrowserWindow, ipcMain, dialog,webContents } from "electron";
+
+import * as PouchDB from 'pouchdb';
+
 import * as path from "path";
 import * as url from "url";
 
@@ -7,6 +10,7 @@ export class MainProcess {
     private static debug:boolean = true ;
     private static initWinTitle:string ='MainWindow';
     private static mainWindowId:number; 
+    private Dblocation:string
 
     constructor() {
         app.requestSingleInstanceLock();
@@ -17,6 +21,7 @@ export class MainProcess {
             app.quit();
         }
         //app.setAppLogsPath(MainProcess.logpath);
+        this.Dblocation = 'D:/node/angular/PouchDB';
     }
 
     createWindow(winTitle:string):void  {
@@ -130,6 +135,48 @@ export class MainProcess {
                     event.reply("window.addEventListener." + eventName,{ requestId });
                 });
             }
+        });
+
+        ipcMain.on('document-insert',(event:any,item:any)=>{
+            console.log(item)
+            let schema= path.join(this.Dblocation,item.schema);
+            let database = new PouchDB(schema,{ auto_compaction: true});
+            database.put(item.document).then( result=> {
+                    console.log(result);
+                    event.reply('insert-sucess', result);
+            }).catch(   error=>{
+                event.reply('insert-fail', error);
+                console.log(error)
+            }).finally(
+                ()=>database.close()
+            )
+        });
+
+        ipcMain.on('document-retrive',(event:any,item:any)=>{
+            let schema= path.join(this.Dblocation,item.schema);
+            let database = new PouchDB(schema,{ auto_compaction: true});
+            database.get(item.id)
+            .then( result=> {
+                event.reply('retrival-sucess', result)
+            }).catch((error)=>{
+                event.reply('retrival-fail', error)
+                console.log(error)
+            }).finally(
+                ()=>database.close()
+            )
+        });
+
+        ipcMain.on('document-delete',(event:any,item:any)=>{
+            let schema= path.join(this.Dblocation,item.schema);
+            let database = new PouchDB(schema,{ auto_compaction: true});
+            database.remove(item.document)
+            .then( result=> {
+                event.reply('delete-sucess', result)
+            }).catch((error)=>{
+                event.reply('delete-fail', error)
+                console.log(error)
+            })
+            database.close();
         });
 
         app.on('quit', (event, exitCode) => {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDbService } from '../services/user.db.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+/* import { UserDbService } from '../services/user.db.service'; */
+import { ElectronConnector } from '../services/electron.service';
+import { DataTemplate } from '../common/model/data.model';
 import { AppError } from '../error/app.error';
 import { ConflictError } from '../error/conflict.error';
 import { BadRequestError } from '../error/badRequest.error';
@@ -12,15 +14,18 @@ import { BadRequestError } from '../error/badRequest.error';
 })
 export class SignupComponent implements OnInit {
   userList:any[];
+
   avaiableUser:number;
+
   signedUpSucessfully:boolean;
+
   form = new FormGroup({
     username: new FormControl('',[ Validators.required,Validators.minLength(5)]),
     password: new FormControl('',Validators.required),
     confirmPaswd: new FormControl('',Validators.required)
   })
 
-  constructor(private service:UserDbService) { 
+  constructor(private service:ElectronConnector) { 
     this.signedUpSucessfully=false;
   }
   
@@ -37,30 +42,27 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getAllDocument()
+    /* this.service.getAllDocument()
     .subscribe(response=>{
       console.log(response)
-    })
+    }) */
   }
 
-  submit( ){
-    this.service.putDocument({ _id:this.form.get('username').value,
-                              name:this.form.get('name').value,
+  
+  submit( ):void{
+      if (this.service.isRunningFromElectron() ){      
+        let document:DataTemplate ={
+                  schema: 'user',
+                  id :this.form.get('username').value,
+                  document : { _id:this.form.get('username').value,
                               password:this.form.get('password').value
-    }).subscribe(response=>{
-        console.log(response);
-        this.signedUpSucessfully=true
-    },(error: AppError)=>{
-      if(error instanceof ConflictError){
-         //this.form.setErrors(error.originalError);
-         alert ("User id Already exists")
+                            }
+                  }          
+        this.service.putDocument(document).subscribe(response=>{
+              console.log(response);
+              this.signedUpSucessfully=true
+        }); 
       }
-      else if(error instanceof BadRequestError){
-        //this.form.setErrors(error.originalError);
-        alert (" Bad  Request")
-     }
-     else throw error;
-    }) 
- }
+  }
 
 }
