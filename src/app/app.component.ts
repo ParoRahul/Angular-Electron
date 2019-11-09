@@ -1,14 +1,18 @@
 import { Component,OnDestroy,ViewChild,AfterViewInit } from '@angular/core';
-/* import { MatDialog } from '@angular/material'; */
+
 import { ElectronService } from 'ngx-electron';
 import { Subscription } from 'rxjs';
-import { CustomDialog } from './custom-dialog/custom-dialog.component';
-import { MenuTemplate } from './common/model/menu.model';
-import { AppConfig } from './app.config';
-import { MenuService } from './menubar/menu.service';
 
 import { MenubarComponent } from './menubar/menubar.component';
 import { TabbarComponent } from './tabbar/tabbar.component';
+
+import { DialogService } from './services/dialog.service'
+import { MenuService } from './menubar/menu.service';
+
+import { CustomDialog } from './custom-dialog/custom-dialog.component';
+import { MenuTemplate } from './common/model/menu.model';
+import { AppConfig } from './app.config';
+
 
 @Component({
   selector: 'app-root',
@@ -26,6 +30,7 @@ export class AppComponent implements AfterViewInit,OnDestroy{
     @ViewChild(TabbarComponent,{static:true}) tabBar;
 
     constructor(  /* private dialog: MatDialog , */
+                private dialog: DialogService,
                 private electronService: ElectronService,
                 private menuservice:MenuService) { }
 
@@ -60,13 +65,21 @@ export class AppComponent implements AfterViewInit,OnDestroy{
     }
 
     onClose(){
-        const dialogRef = this.dialog.open(CustomDialog,{
-            disableClose: true,
-            data:{  message: 'Are you sure want to close the Application ?',
-                    buttonText: {ok: 'Yes',cancel: 'No'},
-                    dialogIconName :'warning'}
-            });
-        dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+        const dialogRef = this.dialog.openDialog(CustomDialog,
+            {
+                height:160,
+                width:300,
+            },
+            {
+                data:
+                    { 
+                        message: 'Are you sure want to close the Application ?',
+                        buttonText: {ok: 'Yes',cancel: 'No'},
+                        dialogIconName :'warning'
+                    }
+            }
+        );
+        dialogRef.afterClosed.subscribe((confirmed: boolean) => {
             if (confirmed){
                 if(this.electronService.isElectronApp) {
                     this.electronService.remote.getCurrentWindow().close();

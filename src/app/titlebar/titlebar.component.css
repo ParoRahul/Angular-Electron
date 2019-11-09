@@ -13,7 +13,7 @@
     -webkit-app-region: drag;
 }
 
-.mat-icon-button{
+/* .mat-icon-button{
     width: 50px; 
     height: 25px; 
     line-height: 0px;
@@ -34,7 +34,7 @@
 #closebtn:hover .mat-icon{
     background-color: red;
 }
-
+ */
 button {
     background-color:#343a40 ;
     border: none;
@@ -47,7 +47,7 @@ button {
     display: block;
     outline: none;
 }
-.material-icons{
+button .material-icons{
     font-size: 15px;
 }
 

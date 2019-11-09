@@ -20,7 +20,15 @@ export class ToolbarComponent implements OnInit {
 
   onLogIn(){
     /* this.dialog.open(LoginComponent,{ disableClose: true }) */
-    this.dialog.openDialog(LoginComponent,{height:450,width:300},{})
+    const dialogRef = this.dialog.openDialog(LoginComponent,
+                                              {
+                                                height:450,
+                                                width:300
+                                              },{})
+    dialogRef.afterClosed.subscribe( result => {
+      console.log(result);
+      //Process the rewsult.
+    });
   }
 
   onApplySettings(){

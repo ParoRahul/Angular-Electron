@@ -52,8 +52,11 @@ export class DialogService {
     this.dialogComponentRef.destroy();
   }
 
-  public openDialog(componentType: Type<any>,style:DialogStyle,data: ComponentData) {
-    this.appendDialogToBody(data,style);
+  public openDialog(componentType: Type<any>,
+                    style:DialogStyle,
+                    data: ComponentData):DialogRef {
+    const dialogRef = this.appendDialogToBody(data,style);
     this.dialogComponentRef.instance.childComponentType = componentType;
+    return dialogRef;
   }
 }

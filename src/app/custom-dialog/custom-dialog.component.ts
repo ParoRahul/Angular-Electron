@@ -1,12 +1,15 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Inject, OnInit } from '@angular/core';
+/* import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'; */
+import { DialogRef } from '../dialog/dialog.ref';
+import { ComponentData } from '../common/component.data';
+
 
 @Component({
   selector: 'custom-dialog',
   templateUrl: './custom-dialog.component.html',
   styleUrls: ['./custom-dialog.component.css']
 })
-export class CustomDialog {
+export class CustomDialog implements OnInit{
 
   message: string = "Are you sure?"
   confirmButtonText = "Yes"
@@ -14,13 +17,17 @@ export class CustomDialog {
   dialogIcon:boolean = true;
   dialogIconName:string = 'warning';
 
-  constructor(  @Inject(MAT_DIALOG_DATA) private data: any,
-                private dialogRef: MatDialogRef<CustomDialog>) {
-      if(data){
-        this.message = data.message || this.message;
-        if (data.buttonText) {
-            this.confirmButtonText = data.buttonText.ok || this.confirmButtonText;
-            this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
+  constructor(  public bucket: ComponentData,
+                public dialogRef: DialogRef) {
+      
+  }
+
+  ngOnInit(){
+    if(this.bucket.data){
+        this.message = this.bucket.data.message || this.message;
+        if (this.bucket.data.buttonText) {
+            this.confirmButtonText = this.bucket.data.buttonText.ok || this.confirmButtonText;
+            this.cancelButtonText = this.bucket.data.buttonText.cancel || this.cancelButtonText;
         }
         /* if(data.dialogIconName){
           this.dialogIcon=true;
@@ -29,11 +36,16 @@ export class CustomDialog {
         else{
           this.dialogIcon=false;
         } */
-      }
+    }
+
   }
 
   onConfirmClick(): void {
     this.dialogRef.close(true);
+  }
+
+  onCancelClick(): void{
+    this.dialogRef.close(false);
   }
 
 }

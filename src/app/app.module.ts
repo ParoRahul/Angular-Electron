@@ -36,7 +36,7 @@ import { AuthoriationService } from './services/authoriation.service';
 
 import { AppErrorHandler } from './error/app.error.handler';
 import { AuthGuard } from './services/auth-guard.service';
-/* import { CustomDialog } from './custom-dialog/custom-dialog.component'; */
+import { CustomDialog } from './custom-dialog/custom-dialog.component';
 
 import { DynamicCompDirective } from './common/dynamic-comp.directive';
 import { DialogComponent } from './dialog/dialog.component';
@@ -52,7 +52,7 @@ import { DialogService } from './services/dialog.service';
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    /* CustomDialog, */
+    CustomDialog,
     MenubarComponent,
     TabbarComponent,
     MenuComponent,
@@ -61,7 +61,7 @@ import { DialogService } from './services/dialog.service';
     DialogComponent
   ],
   entryComponents:[ LoginComponent,
-                    /* CustomDialog , */
+                    CustomDialog ,
                     DialogComponent,
                     TabComponent],
   imports: [
