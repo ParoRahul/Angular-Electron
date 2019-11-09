@@ -1,31 +1,24 @@
 <div class="d-flex flex-column justify-content-center h-100">    
-    <div class="d-flex flex-column pt-3">
-        <button mat-icon-button  
-            (click)="onLogIn()">
-            <mat-icon >account_circle_outlined</mat-icon>         
-        </button>  
+    <div class="d-flex flex-column pt-5">
+        <button (click)="onLogIn()">
+            <i class="material-icons">account_circle</i>         
+        </button> 
     </div>
-    <div class="d-flex flex-column-reverse flex-grow-1">
-        <button mat-icon-button  
-            (click)="onApplySettings()">
-            <mat-icon matTooltip="Settings" 
-                  matTooltipPosition="right">settings_applications</mat-icon>         
+    <div class="d-flex flex-column-reverse flex-grow-1 pb-1">
+        <button (click)="onLock()">
+            <i class="material-icons">lock_open</i>         
         </button>
-        <button mat-icon-button  (click)="onLock()">
-            <mat-icon matTooltip="Lock Application" 
-                  matTooltipPosition="right">lock_open</mat-icon>         
+        <button (click)="onCaptureScreen()">
+            <i class="material-icons">fullscreen</i>         
         </button>
-        <button mat-icon-button  (click)="onCaptureScreen()">
-            <mat-icon matTooltip="Screen shot" 
-                  matTooltipPosition="right">fullscreen</mat-icon>         
+        <button (click)="onBugReporting()">
+            <i class="material-icons">bug_report</i>         
         </button>
-        <button mat-icon-button  (click)="onBugReporting()">
-            <mat-icon matTooltip="Bug Reporting"
-                  matTooltipPosition="right">bug_report</mat-icon>         
+        <button (click)="onSearch()">
+            <i class="material-icons">search_sharp</i>         
         </button>
-        <button mat-icon-button  (click)="onSearch()">
-            <mat-icon matTooltip="Search" 
-                  matTooltipPosition="right">search_sharp</mat-icon>         
+        <button (click)="onApplySettings()">
+            <i class="material-icons">settings_applications</i>         
         </button>
     </div>
 </div>

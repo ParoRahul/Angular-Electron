@@ -38,7 +38,7 @@ export class TabbarComponent implements OnInit {
     this.selectTab(this.dynamicTabs[this.dynamicTabs.length -1])
   }
 
-  selectTab(tab){
+  selectTab(tab:TabComponent){
     //console.log(` tab title is ${tab.title}`)
     this.dynamicTabs.forEach(item=>{
       //console.log(` item title is ${item.title}`)
@@ -49,6 +49,18 @@ export class TabbarComponent implements OnInit {
         item.active=false
       } 
     })
+  }
+
+  closeTab(tab:TabComponent){
+    for (let i = 0; i < this.dynamicTabs.length; i++) {
+      if (this.dynamicTabs[i] === tab) {
+          this.dynamicTabs.splice(i, 1);
+          let viewContainerRef = this.tabtemplate.container;
+          viewContainerRef.remove(i);
+          this.selectTab(this.dynamicTabs[0]);
+          break;
+      }
+    }
   }
 
 }

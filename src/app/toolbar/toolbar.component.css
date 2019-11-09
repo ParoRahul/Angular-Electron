@@ -10,3 +10,26 @@
 .mat-icon-button .mat-icon{
     color:#fff;
 }
+
+button {
+    background-color:var(--toolbar) ;
+    border: none;
+    color: #aaa;
+    padding: 8px 8px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    outline: none;
+    margin: 0px;
+}
+button .material-icons{
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+}
+
+button:hover{
+    /* background-color:#343a40 ; */
+    color: #fff;
+    margin: 1px;
+}

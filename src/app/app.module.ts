@@ -8,10 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxElectronModule } from 'ngx-electron';
 
 import 'hammerjs';
-import {MatIconModule} from '@angular/material/icon';
+/* import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
-/* import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs'; */
 
 import { AppRoutingModule } from './app-routing.module';
@@ -67,10 +67,10 @@ import { DialogService } from './services/dialog.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatIconModule,
+    /* MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    /* MatDialogModule,
+    MatDialogModule,
     MatTabsModule, */
     AppRoutingModule,
     FormsModule,
