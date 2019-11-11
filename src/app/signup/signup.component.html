@@ -1,56 +1,70 @@
-<form [formGroup]="form" class="modal" (ngSubmit)="submit()">  
-    <h6>Sign up</h6>  
+<form [formGroup]="form" class="d-flex form-inline  flex-column  bg-green p-3"> 
+        <i class="material-icons " style="color:#000; font-size: 48px;">assignment_ind</i>
+        <span class="m-1">Signup </span>
+    <!-- <h6>Sign up</h6>  
     <div class="form-group">
         <img class="rounded mx-auto d-block" id="userimg" src="../assets/black_user.png" alt="user image">
         <label for="userimgfile" id="userimglabel" style="cursor:pointer;" >Choose a profile picture</label>
         <input type="file" id="userimgfile" accept="image/png,image/jpeg" style="display: none">
-    </div>  
-    <div class="form-group">
-        <label for="username" >Username</label>
+    </div>  -->
+    <div class="form-group mt-3">
+        <label class="mr-3" for="username" >User Name</label>
         <input  formControlName="username"
                 id="username" 
                 type="text" 
                 placeholder="Enter Username"
-                class="form-control ">
-        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
-            <div *ngIf="username.errors.required">UserName is required</div>
-            <div *ngIf="username.errors.minlength">
-                userame should be minimum of {{username.errors.minlength.requiredLength}} characters</div>
-        </div>        
+                class="form-control form-control-sm">        
     </div>
-    <div class="form-group">
-        <label  for="password" >Password</label>
+    <div *ngIf="username.touched && username.invalid" class=" align-self-end text-danger" >
+        <small *ngIf="username.errors.required">UserName is required</small>
+        <small *ngIf="username.errors.minlength">
+            userame should be minimum of {{username.errors.minlength.requiredLength}} characters</small>
+    </div>
+
+    <div class="form-group  mt-3">
+        <label class="mr-4" for="password"  >Password</label>
         <input  formControlName="password"
                 id="password" 
                 type="password" 
                 placeholder="Enter password"
-                class="form-control ">
-        <div *ngIf="password.touched && password.invalid" class="alert alert-danger ">
-            <div *ngIf="password.errors.required">Password is required</div>
-        </div>        
+                class="form-control form-control-sm">       
     </div>
-    <div class="form-group">
-        <label  for="confirmPaswd" >Password</label>
+    <div *ngIf="password.touched && password.invalid" class="align-self-end text-danger" >
+            <small *ngIf="password.errors.required">Password is required</small>
+    </div> 
+
+    <div class="form-group mt-3">
+        <label class="mr-4"  for="password"  >Password</label>
         <input  formControlName="confirmPaswd"
                 id="confirmPaswd" 
                 type="password" 
                 placeholder="Enter password again"
-                class="form-control">
-        <div *ngIf="confirmPaswd.touched && confirmPaswd.invalid" class="alert alert-danger ">
-            <div *ngIf="confirmPaswd.errors.required">Password is required</div>
-        </div>        
+                class="form-control form-control-sm ">        
     </div>
+    <div *ngIf="confirmPaswd.touched && confirmPaswd.invalid" class="align-self-end text-danger">
+        <small *ngIf="confirmPaswd.errors.required">Password is required</small>
+    </div>
+
+    <div class="form-group mt-3" >
+        <label class="mr-5" for="password" >User  Role</label>
+        <select class="form-control form-control-sm ml-5" id="role" formControlName="role">
+            <option value="" selected disabled>Select Role</option>
+            <option value="1">Admin</option>
+            <option value="2">Controller</option>
+        </select>
+    </div>
+
+    <div *ngIf="role.touched && role.invalid" class="align-self-end text-danger">
+        <small *ngIf="role.errors.required">Role is required</small>
+    </div>
+
     <div class="alert alert-success" role="alert" *ngIf = "signedUpSucessfully">
         <h6>Sucessfully Signup with Test App</h6>
-        <h6><a routerLink="">Login with new credentials</a></h6>
     </div>
-    <!--<div class="alert alert-danger" role="alert" *ngIf = "form.invalid">
-        <div *ngIf="form.errors.status==409">
-            <h6>Userd Name or Password invalid</h6>
-        </div>
-    </div>-->
-    <div class="login">
-        <span ><a routerLink="">Login Account </a></span>
+
+    <div classs="btn-group ">
+        <button class="btn btn-outline-dark btn-sm m-3" [disabled]="!form.valid" >SignUp</button>
+        <button class="btn btn-outline-dark btn-sm m-3" [disabled]="!form.valid" >SignUp & Login</button>
     </div>
-    <button class="btn btn-primary" [disabled]="!form.valid" [hidden]="signedUpSucessfully">SignUp</button>
+    
 </form>

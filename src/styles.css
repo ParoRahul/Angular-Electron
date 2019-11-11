@@ -29,7 +29,7 @@ ul{
     padding: 0;
 }
 
-.form-control{
+/* .form-control{
     height: 25px;
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
@@ -54,7 +54,7 @@ ul{
     padding-top:0;
     padding-bottom: 0;
 }
-
+ */
 .material-icons {
   font-family: 'Material Icons';
   font-weight: lighter;
@@ -71,3 +71,6 @@ ul{
   text-rendering: optimizeLegibility;
 }
 
+.bg-green{
+    background-color: #adc7cf !important ;
+}

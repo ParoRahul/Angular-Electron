@@ -37,7 +37,11 @@ export class LoginComponent implements OnInit {
     })    
   }
 
-  submit( ){
+  goAnnonymous(){
+      console.log(this.form.value);
+  }
+
+  createAccount(){
     console.log(this.form.value);
     this.service.logIn(this.form.value)
     .subscribe( result => {
@@ -47,12 +51,8 @@ export class LoginComponent implements OnInit {
         this.validLogin=true
       }
       else
-         this.validLogin=false
+        this.validLogin=false
     })
- }
-
- goAnnonymous(){
-  console.log(this.form.value);
- }
+  }
 
 }

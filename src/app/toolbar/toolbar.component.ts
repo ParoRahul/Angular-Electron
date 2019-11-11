@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit {
     /* this.dialog.open(LoginComponent,{ disableClose: true }) */
     const dialogRef = this.dialog.openDialog(LoginComponent,
                                               {
-                                                height:450,
+                                                height:320,
                                                 width:300
                                               },{})
     dialogRef.afterClosed.subscribe( result => {

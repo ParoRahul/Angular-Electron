@@ -13,14 +13,12 @@ import { BadRequestError } from '../error/badRequest.error';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  userList:any[];
-
-  avaiableUser:number;
 
   signedUpSucessfully:boolean;
 
   form = new FormGroup({
-    username: new FormControl('',[ Validators.required,Validators.minLength(5)]),
+    username: new FormControl('',Validators.required),
+    role: new FormControl('',Validators.required),
     password: new FormControl('',Validators.required),
     confirmPaswd: new FormControl('',Validators.required)
   })
@@ -33,6 +31,10 @@ export class SignupComponent implements OnInit {
     return this.form.get('username')
   }
 
+  get role(){
+    return this.form.get('role')
+  }
+
   get password(){
     return this.form.get('password')
   }
@@ -42,12 +44,8 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    /* this.service.getAllDocument()
-    .subscribe(response=>{
-      console.log(response)
-    }) */
+    
   }
-
   
   submit( ):void{
       if (this.service.isRunningFromElectron() ){      
@@ -55,7 +53,8 @@ export class SignupComponent implements OnInit {
                   schema: 'user',
                   id :this.form.get('username').value,
                   document : { _id:this.form.get('username').value,
-                              password:this.form.get('password').value
+                              password:this.form.get('password').value,
+                              role:this.form.get('role').value
                             }
                   }          
         this.service.putDocument(document).subscribe(response=>{
