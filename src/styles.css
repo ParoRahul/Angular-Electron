@@ -1,19 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-/* @import "~@angular/material/prebuilt-themes/purple-green.css"; */
 :root {
-    --toolbar:#222;
+    --toolbar:#343a40;
     --titlebar: #262626; 
-    --titlebarhover:#565656;
     --statusbar:#2c3e50;
-    --tabbar:#afafaf;
-    --tabview:#f0f0f0;
     --text: #fff;
     --danger:#ce5656;
-    --tool-bar-width: 40px;
-    --title-bar-height: 25px;
-    --menu-bar-height: 20px;
-    --status-bar-height: 20px;
-    --tab-bar-height: 25px;
+    --toolbar-width: 45px;
+    --titlebar-height: 30px;
+    --tabbar-height: 25px;
+    --statusbar-height: 25px;
 }  
 
 *{
@@ -23,54 +18,37 @@
     user-select: none;
 }
 
-ul{
+.bg-green{
+    background-color: #adc7cf !important ;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: lighter;
+    font-style: normal;
+    font-size: 24px;  
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+button{
+    outline: none !important;
+}
+
+ul {
     list-style: none;
     margin:0;
     padding: 0;
-}
-
-/* .form-control{
-    height: 25px;
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 50;
-    border: none !important;
-}
-
-.btn{
-    height: 30px;
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 50;
-}
-
-.form-group{
-    margin-bottom: 10px;
-}
-
-.alert{
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top:0;
-    padding-bottom: 0;
-}
- */
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: lighter;
-  font-style: normal;
-  font-size: 24px;  
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-.bg-green{
-    background-color: #adc7cf !important ;
 }

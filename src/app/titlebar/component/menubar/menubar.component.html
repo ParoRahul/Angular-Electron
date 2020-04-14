@@ -1,0 +1,11 @@
+<div class="position-relative d-flex flex-row align-items-center m-0 p-0" [style.z-index]="'2000'">
+    <div class="d-block m-0 p-0 menuName" *ngFor="let config of menuConfig">
+        <button (click)="onMenuBarClick(config.label)">{{config.label}}</button>
+        <ul>
+            <ng-container *ngFor="let submenu of config.submenu">       
+                <app-menuitem   [config]="submenu" 
+                        [parent]="config.label"></app-menuitem>
+            </ng-container>
+        </ul>
+    </div>
+</div>

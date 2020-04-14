@@ -1,0 +1,26 @@
+:host{
+    grid-row: 2/3;
+    grid-column: 2/3; 
+}
+
+.tab-active{
+    background-color: cadetblue !important;
+}
+
+.tab-inactive{
+    background-color: rgb(120, 163, 165) !important;
+}
+
+.tabtitle{
+    user-select: none;
+    cursor: pointer;
+}
+
+.tabtitle .material-icons{
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tabtitle .material-icons:hover{
+    color: red;
+}

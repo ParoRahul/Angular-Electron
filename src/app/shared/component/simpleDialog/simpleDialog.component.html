@@ -1,0 +1,11 @@
+<div class="d-block bg-white m-3" >
+	<div class="text-center text-wrap">{{message}}</div>
+	<div class="m-5">
+		<button class="btn btn-sm btn-outline-danger p-1 px-4 float-left" 
+				tabindex="1" 
+				(click)="onConfirmClick()">{{confirmButtonText}}</button>
+		<button class="btn btn-sm btn-outline-dark p-1 px-4 float-right"	
+				tabindex="-1"
+				(click)="onCancelClick()">{{cancelButtonText}}</button>
+	</div>
+</div>

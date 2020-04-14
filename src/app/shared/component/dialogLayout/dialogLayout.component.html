@@ -1,0 +1,6 @@
+<div class="overlay" (click)="onOverlayClicked($event)">
+    <div class="dialog rounded-lg" (click)="onDialogClicked($event)"  
+        [style.width.px]="dialogWidth" [style.height.px]="dialogHeight">
+        <ng-template appDynamicComponent> </ng-template>
+    </div>
+</div>

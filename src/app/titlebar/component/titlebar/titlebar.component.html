@@ -1,0 +1,23 @@
+<div class="d-flex flex-row  align-content-center bg-dark w-100 h-100" >
+    <div class="d-inline-block p-1" id ="applogo" [style.width]="'40px'">
+        <i class="material-icons">widgets</i>
+    </div>
+    <div class="p-0 px-2">
+        <app-menubar></app-menubar>
+    </div>
+    <div class="flex-grow-1 align-self-center text-center"  id ="dragableRegion" 
+        ng-dblclick = "onResize($event)">
+        <span class="align-middle text-white">{{AppTitle}}</span>
+    </div>
+    
+    <button (click)="onMinimize($event)" >       
+        <i class="material-icons" >remove</i>   
+    </button>
+    <button  (click)="onResize($event)">
+        <i class="material-icons" *ngIf="isResized" >filter_none</i>   
+        <i class="material-icons" *ngIf="!isResized" >crop_din</i>             
+    </button>  
+    <button id="closebtn" (click)="onClose($event)" >
+        <i class="material-icons">close</i>
+    </button>       
+</div>
