@@ -12,7 +12,7 @@ export class SchedulerService {
   constructor() { }
 
   schedulerRequest(template: SchedulerData) {
-    this.subject.next(template);
+      this.subject.next(template);
   }
 
   clearcatche() {

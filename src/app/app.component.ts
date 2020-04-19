@@ -1,7 +1,6 @@
 import { Component, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { ElectronService } from 'ngx-electron';
 import { SchedulerService } from './shared/service/scheduler.service';
 import { DialogService } from './shared/service/dialog.service';
 
@@ -12,9 +11,8 @@ import { PageNotFoundComponent } from './shared/component/pageNotFound/pageNotFo
 
 import { LoginComponent } from './membership/component/login/login.component';
 
-import { SchedulerData } from './shared/model/schedulerData'
+import { SchedulerData } from './shared/model/schedulerData';
 import { TabContents } from './tabbar/model/tabContent';
-
 
 @Component({
   selector: 'app-root',
@@ -30,11 +28,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     @ViewChild(TitlebarComponent,{static:true}) titleBar;
 
     constructor(  private schedulerService: SchedulerService,
-                  private dialogService: DialogService,
-                  private electronService: ElectronService) { }
+                  private dialogService: DialogService ) { }
 
     ngAfterViewInit() {
-      this.schedulerSubscription = this.schedulerService.serveScheduler().
+        this.schedulerSubscription = this.schedulerService.serveScheduler().
         subscribe(template => {
             if (template) {
                 if (template.type === 'dialog') {
@@ -48,74 +45,32 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-      this.schedulerSubscription.unsubscribe();
+        this.schedulerSubscription.unsubscribe();
     }
 
-    scheduleDialog(template: SchedulerData){
-      if (template.component === 'newProject') {
-        console.log(template);
-      }
-      if (template.component === 'login') {
-          this.onLogIn()
-      }
-  }
-
-  scheduleTab(template: SchedulerData) {
-    if (template.component == 'pageNotFound'){
-        this.tabBar.openTab(new TabContents(PageNotFoundComponent,{}));
-    }
-  }
-
-  onMinimize(){
-    if ( this.electronService.isElectronApp ) {
-        this.electronService.remote.getCurrentWindow().minimize();
-    }
-}
-
-onResize(){
-    if ( this.electronService.isElectronApp ) {
-        const currentWindow = this.electronService.remote.getCurrentWindow();
-        if (currentWindow.isMaximized() ) {
-            currentWindow.unmaximize();
-        } else {
-            currentWindow.maximize();
+    private scheduleDialog(template: SchedulerData): void {
+        if (template.component === 'newProject') {
+            console.log(template);
+        }
+        if (template.component === 'login') {
+            this.onLogIn()
         }
     }
-}
 
-onClose() {
-    const dialogRef = this.dialogService.openDialog(SimpleDialogComponent,
-        {
-          height: 160,
-          width: 300,
-        },
-        {
-          data:
-              {
-                message: 'You may have unsaved work, are you \
-                sure want to close the application ?',
-                buttonText: {ok: 'Yes', cancel: 'No'},
-                dialogIconName : 'warning'
-              }
+    private scheduleTab(template: SchedulerData): void {
+        if (template.component == 'pageNotFound'){
+            this.tabBar.openTab(new TabContents(PageNotFoundComponent,{}));
         }
-    );
-    dialogRef.afterClosed.subscribe((confirmed: boolean) => {
-        if (confirmed){
-            if (this.electronService.isElectronApp) {
-                this.electronService.remote.getCurrentWindow().close();
-            }
-        }
-    });
-}
+    }
 
-private onLogIn() {
-    const dialogRef = this.dialogService.openDialog(LoginComponent,{
-        height:320,
-        width:300
-    },{})
-    dialogRef.afterClosed.subscribe( result => {
-        console.log(result);
-    });
-}
+    private onLogIn() {
+        const dialogRef = this.dialogService.openDialog(LoginComponent,{
+            height:320,
+            width:300
+        },{})
+        dialogRef.afterClosed.subscribe( result => {
+            console.log(result);
+        });
+    }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms'
-import { AuthoriationService } from '../../service/authoriation.service';
+/* import { AuthoriationService } from '../../service/authoriation.service'; */
 import { DialogRef } from '../../../shared/model/dialog.ref';
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   public validLogin:boolean;
 
-  constructor(private service:AuthoriationService,
+  constructor(/* private service:AuthoriationService, */
               public dialogRef: DialogRef)
   {
     this.validLogin=true;

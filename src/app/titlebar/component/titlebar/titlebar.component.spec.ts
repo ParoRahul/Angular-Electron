@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { TitlebarComponent } from './titlebar.component';
+import { MenubarComponent } from '../menubar/menubar.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MenuitemComponent } from '../menuitem/menuitem.component';
 
 describe('TitlebarComponent', () => {
   let component: TitlebarComponent;
@@ -8,7 +12,11 @@ describe('TitlebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TitlebarComponent ]
+      imports: [SharedModule],
+      declarations: [ TitlebarComponent,
+                      MenubarComponent,
+                      MenuitemComponent ],
+      providers : [  ]
     })
     .compileComponents();
   }));
@@ -21,5 +29,11 @@ describe('TitlebarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should Refect The App title Properly', () => {
+    let element = fixture.debugElement.query(By.css('#dragableRegion'));
+    let el:HTMLElement = element.nativeElement;
+    expect( el.innerText ).toBe(component.getAppTiltle());
   });
 });

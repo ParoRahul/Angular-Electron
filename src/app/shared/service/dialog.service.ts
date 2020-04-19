@@ -19,7 +19,7 @@ export class DialogService {
     private injector: Injector
   ) {}
 
-  appendDialogToBody(data: ComponentData, style: DialogStyle){
+  private appendDialogToBody(data: ComponentData, style: DialogStyle){
     const map = new WeakMap();
     map.set(ComponentData, data);
 

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatusbarComponent } from './statusbar.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('StatusbarComponent', () => {
   let component: StatusbarComponent;
@@ -8,7 +9,9 @@ describe('StatusbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatusbarComponent ]
+      imports: [SharedModule],
+      declarations: [ StatusbarComponent ],
+      providers : []
     })
     .compileComponents();
   }));

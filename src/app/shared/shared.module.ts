@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxElectronModule } from 'ngx-electron';
 
 import { SchedulerService } from './service/scheduler.service';
-import { DialogService } from './service/dialog.service'
+import { DialogService } from './service/dialog.service';
 
 import { DialogLayoutComponent } from './component/dialogLayout/dialogLayout.component';
 import { SimpleDialogComponent } from './component/simpleDialog/simpleDialog.component';
@@ -26,7 +26,7 @@ import { DynamicCompDirective } from './directive/dynamic-comp.directive';
   ],
   providers: [ SchedulerService,
                DialogService ],
-  exports:[ /* Anguler Module Exports */
+  exports: [ /* Anguler Module Exports */
             CommonModule,
             FormsModule,
             ReactiveFormsModule,
@@ -37,8 +37,6 @@ import { DynamicCompDirective } from './directive/dynamic-comp.directive';
             SimpleDialogComponent,
             PageNotFoundComponent,
             /* Custom Service Exports */
-            SchedulerService,
-            DialogService
   ],
   entryComponents: [ DialogLayoutComponent ]
 })

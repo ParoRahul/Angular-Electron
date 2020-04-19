@@ -7,13 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  title:string='Page Not Found';
-  isCloseable:boolean;
-  active:boolean = true;
+  title: string = 'Page Not Found';
+  isCloseable: boolean;
+  active: boolean = true;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

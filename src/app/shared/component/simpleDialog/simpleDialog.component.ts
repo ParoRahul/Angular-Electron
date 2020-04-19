@@ -10,14 +10,14 @@ import { ComponentData } from '../../model/component.data';
 })
 export class SimpleDialogComponent implements OnInit {
 
-  message: string = 'Are you sure?'
-  confirmButtonText: string = 'Yes'
-  cancelButtonText: string = 'Cancel'
+  message: string = 'Are you sure?';
+  confirmButtonText: string = 'Yes';
+  cancelButtonText: string = 'Cancel';
   dialogIcon: boolean = true;
   dialogIconName: string = 'warning';
 
-  constructor(  public bucket: ComponentData,
-                public dialogRef: DialogRef) { }
+  constructor(  private bucket: ComponentData,
+                private dialogRef: DialogRef ) { }
 
   ngOnInit(){
     if ( this.bucket.data){

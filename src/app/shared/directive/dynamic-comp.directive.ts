@@ -6,5 +6,4 @@ import { Directive,ViewContainerRef } from '@angular/core';
 export class DynamicCompDirective {
 
   constructor(public container: ViewContainerRef) { }
-
 }
