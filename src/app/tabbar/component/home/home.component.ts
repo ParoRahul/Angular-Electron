@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { DynamicCompDirective } from 'src/app/shared/directive/dynamic-comp.directive';
+
+import { NewprojectComponent } from '../newproject/newproject.component';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +14,20 @@ export class HomeComponent implements OnInit {
   isCloseable:boolean;
   active:boolean = true;
 
-  constructor() { }
+  @ViewChild(DynamicCompDirective,{static:true}) tabtemplate: DynamicCompDirective;
 
-  ngOnInit(): void {
+  constructor(private componentResolver: ComponentFactoryResolver) { }
+
+  diplayButton:boolean = true;
+
+  ngOnInit(): void {}
+
+  public addProject(): void {
+    const componentFactory = this.componentResolver.resolveComponentFactory(NewprojectComponent);
+    const viewContainerRef = this.tabtemplate.container;
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+    componentRef.changeDetectorRef.checkNoChanges();
+    this.diplayButton = false;
   }
 
 }

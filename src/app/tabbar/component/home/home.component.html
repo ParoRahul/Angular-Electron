@@ -1,9 +1,10 @@
 <div class="flex-row align-content-center p-1 h-100" [ngClass]="active? 'd-flex':'d-none'">
-    <div class="align-self-center text-center">
-        <div class="text-info p-5"><h2>New Project </h2></div>
-        <button class="btn btn-lg ">
-            <i class="material-icons" *ngIf="!isAppMinimized" >add</i> 
+    <div class="align-self-center text-center flex-fill">
+        <button class="btn btn-lg" (click) = "addProject()"  [ngClass]="diplayButton? 'btn':'d-none'">
+            <h2>New Project </h2>
+            <i class="material-icons" >add_circle_outline</i> 
         </button>
+        <ng-template appDynamicComponent ></ng-template>
     </div>
-    <div class="align-self-center text-center">Project History</div>
+    <div class="align-self-center text-center p-1 ">Project History</div>
 </div>
