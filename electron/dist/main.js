@@ -1,45 +1,45 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
-var PouchDB = require("pouchdb");
+/* import * as PouchDB from 'pouchdb'; */
 var path = require("path");
 var url = require("url");
 var MainProcess = /** @class */ (function () {
     function MainProcess() {
         electron_1.app.requestSingleInstanceLock();
         if (!electron_1.app.hasSingleInstanceLock()) {
-            console.log(" ............................................");
-            console.log(" A Instance of The Application is running ...");
-            console.log(" ............................................");
+            console.log(' ............................................');
+            console.log(' A Instance of The Application is running ...');
+            console.log(' ............................................');
             electron_1.app.quit();
         }
-        //app.setAppLogsPath(MainProcess.logpath);
+        // app.setAppLogsPath(MainProcess.logpath);
         this.Dblocation = 'D:/node/angular/PouchDB';
     }
     MainProcess.prototype.createWindow = function (winTitle) {
         var window = new electron_1.BrowserWindow({
-            "title": "Main_Window",
-            "width": 1050,
-            "height": 700,
-            "minWidth": 600,
-            "minHeight": 400,
-            "frame": false,
-            "parent": null,
-            "useContentSize": true,
-            "show": false,
-            "icon": path.join(__dirname, 'app_taskbar_icon.png'),
-            "webPreferences": {
-                "nodeIntegration": true,
-                "nodeIntegrationInWorker": true
+            title: 'Main_Window',
+            width: 1050,
+            height: 700,
+            minWidth: 600,
+            minHeight: 400,
+            frame: false,
+            parent: null,
+            useContentSize: true,
+            show: false,
+            icon: path.join(__dirname, 'app_taskbar_icon.png'),
+            webPreferences: {
+                nodeIntegration: true,
+                nodeIntegrationInWorker: true
             }
         });
         if (window == null) {
-            console.log(" Window is Null");
+            console.log(' Window is Null');
             throw new Error('Window is Null');
         }
         window.loadURL(url.format({
             pathname: path.join(__dirname, "/../../dist/Angular-Electron/index.html"),
-            protocol: "file:",
+            protocol: 'file:',
             slashes: true
         }));
         if (MainProcess.debug)
@@ -50,7 +50,7 @@ var MainProcess = /** @class */ (function () {
                 window.show();
         });
         window.on('closed', function () {
-            console.log(" closed event catched");
+            console.log(' closed event catched');
             window = null;
         });
         window.webContents.on('did-fail-load', function (event, errorCode, errorDescription, validatedURL) {
@@ -106,46 +106,52 @@ var MainProcess = /** @class */ (function () {
             var currentWindow = electron_1.BrowserWindow.fromId(MainProcess.mainWindowId);
             if (currentWindow != null) {
                 electron_1.dialog.showOpenDialog(currentWindow, features).then(function (result) {
-                    event.reply("window.addEventListener." + eventName, { requestId: requestId, result: result });
+                    event.reply('window.addEventListener.' + eventName, { requestId: requestId, result: result });
                 }).catch(function (err) {
-                    event.reply("window.addEventListener." + eventName, { requestId: requestId });
+                    event.reply('window.addEventListener.' + eventName, { requestId: requestId });
                 });
             }
         });
         electron_1.ipcMain.on('document-insert', function (event, item) {
             console.log(item);
-            var schema = path.join(_this.Dblocation, item.schema);
-            var database = new PouchDB(schema, { auto_compaction: true });
-            database.put(item.document).then(function (result) {
-                console.log(result);
-                event.reply('insert-sucess', result);
-            }).catch(function (error) {
+            /* let schema= path.join(this.Dblocation,item.schema);
+            let database = new PouchDB(schema,{ auto_compaction: true});
+            database.put(item.document).then( result=> {
+                    console.log(result);
+                    event.reply('insert-sucess', result);
+            }).catch(   error=>{
                 event.reply('insert-fail', error);
-                console.log(error);
-            }).finally(function () { return database.close(); });
+                console.log(error)
+            }).finally(
+                ()=>database.close()
+            ) */
         });
         electron_1.ipcMain.on('document-retrive', function (event, item) {
-            var schema = path.join(_this.Dblocation, item.schema);
-            var database = new PouchDB(schema, { auto_compaction: true });
+            console.log(item);
+            /* let schema= path.join(this.Dblocation,item.schema);
+            let database = new PouchDB(schema,{ auto_compaction: true});
             database.get(item.id)
-                .then(function (result) {
-                event.reply('retrival-sucess', result);
-            }).catch(function (error) {
-                event.reply('retrival-fail', error);
-                console.log(error);
-            }).finally(function () { return database.close(); });
+            .then( result=> {
+                event.reply('retrival-sucess', result)
+            }).catch((error)=>{
+                event.reply('retrival-fail', error)
+                console.log(error)
+            }).finally(
+                ()=>database.close()
+            ) */
         });
         electron_1.ipcMain.on('document-delete', function (event, item) {
-            var schema = path.join(_this.Dblocation, item.schema);
-            var database = new PouchDB(schema, { auto_compaction: true });
+            console.log(item);
+            /* let schema= path.join(this.Dblocation,item.schema);
+            let database = new PouchDB(schema,{ auto_compaction: true});
             database.remove(item.document)
-                .then(function (result) {
-                event.reply('delete-sucess', result);
-            }).catch(function (error) {
-                event.reply('delete-fail', error);
-                console.log(error);
-            });
-            database.close();
+            .then( result=> {
+                event.reply('delete-sucess', result)
+            }).catch((error)=>{
+                event.reply('delete-fail', error)
+                console.log(error)
+            })
+            database.close(); */
         });
         electron_1.app.on('quit', function (event, exitCode) {
             console.log(" Application is going to be Exit with code " + exitCode);
@@ -168,7 +174,7 @@ var MainProcess = /** @class */ (function () {
         });
     };
     MainProcess.logpath = '../log';
-    MainProcess.debug = true;
+    MainProcess.debug = false;
     MainProcess.initWinTitle = 'MainWindow';
     return MainProcess;
 }());

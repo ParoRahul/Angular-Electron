@@ -1,60 +1,59 @@
-import { app, BrowserWindow, ipcMain, dialog,webContents } from "electron";
+import { app, BrowserWindow, ipcMain, dialog,webContents } from 'electron';
 
-import * as PouchDB from 'pouchdb';
+/* import * as PouchDB from 'pouchdb'; */
 
-import * as path from "path";
-import * as url from "url";
+import * as path from 'path';
+import * as url from 'url';
 
 export class MainProcess {
     private static logpath:string ='../log';
-    private static debug:boolean = true ;
-    private static initWinTitle:string ='MainWindow';
-    private static mainWindowId:number; 
+    private static debug:boolean = false;
+    private static initWinTitle:string = 'MainWindow';
+    private static mainWindowId:number;
     private Dblocation:string
 
     constructor() {
         app.requestSingleInstanceLock();
         if (!app.hasSingleInstanceLock()) {
-            console.log(" ............................................");
-            console.log(" A Instance of The Application is running ...");
-            console.log(" ............................................");
+            console.log(' ............................................');
+            console.log(' A Instance of The Application is running ...');
+            console.log(' ............................................');
             app.quit();
         }
-        //app.setAppLogsPath(MainProcess.logpath);
+        // app.setAppLogsPath(MainProcess.logpath);
         this.Dblocation = 'D:/node/angular/PouchDB';
     }
 
     createWindow(winTitle:string):void  {
         let window = new BrowserWindow({
-                "title": "Main_Window",
-                "width": 1050,
-                "height": 700,
-                "minWidth": 600,
-                "minHeight": 400,
-                "frame": false,
-                "parent": null,
-                "useContentSize": true,
-                "show": false,
-                "icon": path.join(__dirname,'app_taskbar_icon.png'),
-                "webPreferences": {
-                    "nodeIntegration": true,
-                    "nodeIntegrationInWorker": true
+                title: 'Main_Window',
+                width: 1050,
+                height: 700,
+                minWidth: 600,
+                minHeight: 400,
+                frame: false,
+                parent: null,
+                useContentSize: true,
+                show: false,
+                icon: path.join(__dirname,'app_taskbar_icon.png'),
+                webPreferences: {
+                    nodeIntegration: true,
+                    nodeIntegrationInWorker: true
                 }
         });
         if ( window == null ){
-            console.log(" Window is Null");
+            console.log(' Window is Null');
             throw new Error('Window is Null');
         }
         window.loadURL(url.format({
                 pathname: path.join(__dirname, `/../../dist/Angular-Electron/index.html`),
-                protocol: "file:",
+                protocol: 'file:',
                 slashes: true
             })
         );
 
-        if (MainProcess.debug) 
+        if (MainProcess.debug)
             window.webContents.openDevTools();
-        
         MainProcess.mainWindowId=window.id;
 
         window.once('ready-to-show', () => {
@@ -63,7 +62,7 @@ export class MainProcess {
         });
 
         window.on('closed', () => {
-            console.log(" closed event catched");
+            console.log(' closed event catched');
             window = null;
         });
 
@@ -87,8 +86,6 @@ export class MainProcess {
         window.on('responsive', () => {
             console.log('The main window has become responsive again.');
         });
-        
-        
     }
 
     run() {
@@ -130,16 +127,16 @@ export class MainProcess {
             let currentWindow = BrowserWindow.fromId(MainProcess.mainWindowId);
             if (currentWindow != null) {
                 dialog.showOpenDialog(currentWindow,features).then(result => {
-                    event.reply("window.addEventListener." + eventName,{ requestId, result });
+                    event.reply('window.addEventListener.' + eventName,{ requestId, result });
                 }).catch(err => {
-                    event.reply("window.addEventListener." + eventName,{ requestId });
+                    event.reply('window.addEventListener.' + eventName,{ requestId });
                 });
             }
         });
 
         ipcMain.on('document-insert',(event:any,item:any)=>{
             console.log(item)
-            let schema= path.join(this.Dblocation,item.schema);
+            /* let schema= path.join(this.Dblocation,item.schema);
             let database = new PouchDB(schema,{ auto_compaction: true});
             database.put(item.document).then( result=> {
                     console.log(result);
@@ -149,11 +146,12 @@ export class MainProcess {
                 console.log(error)
             }).finally(
                 ()=>database.close()
-            )
+            ) */
         });
 
         ipcMain.on('document-retrive',(event:any,item:any)=>{
-            let schema= path.join(this.Dblocation,item.schema);
+            console.log(item)
+            /* let schema= path.join(this.Dblocation,item.schema);
             let database = new PouchDB(schema,{ auto_compaction: true});
             database.get(item.id)
             .then( result=> {
@@ -163,11 +161,12 @@ export class MainProcess {
                 console.log(error)
             }).finally(
                 ()=>database.close()
-            )
+            ) */
         });
 
         ipcMain.on('document-delete',(event:any,item:any)=>{
-            let schema= path.join(this.Dblocation,item.schema);
+            console.log(item)
+            /* let schema= path.join(this.Dblocation,item.schema);
             let database = new PouchDB(schema,{ auto_compaction: true});
             database.remove(item.document)
             .then( result=> {
@@ -176,7 +175,7 @@ export class MainProcess {
                 event.reply('delete-fail', error)
                 console.log(error)
             })
-            database.close();
+            database.close(); */
         });
 
         app.on('quit', (event, exitCode) => {
@@ -205,5 +204,5 @@ export class MainProcess {
 }
 
 
-var mainProcess = new MainProcess();
+const mainProcess = new MainProcess();
 mainProcess.run();

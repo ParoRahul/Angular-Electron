@@ -6,10 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule} from './shared/shared.module';
 
-import { TitlebarModule } from './titlebar/titlebar.Module';
+import { TitlebarModule } from './titlebar/titlebar.module';
 import { TabbarModule } from './tabbar/tabbar.module';
-import { ToolbarModule } from './toolbar/toolbar.Module';
-import { StatusbarModule } from './statusbar/statusbar.Module';
+import { ToolbarModule } from './toolbar/toolbar.module';
+import { StatusbarModule } from './statusbar/statusbar.module';
 
 import { MembershipModule } from './membership/membership.module';
 

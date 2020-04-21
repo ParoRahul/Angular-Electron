@@ -12,8 +12,8 @@ import { ElectronService } from 'ngx-electron';
 })
 export class TitlebarComponent implements OnInit {
   private isMinimized: boolean;
-  disableClose: boolean;
-  private AppTitle: string = 'Angular-Electron-Demo-App';
+  public disableClose: boolean;
+  private _AppTitle: string = 'Angular-Electron-Demo-App';
 
   @ViewChild(MenubarComponent,{static:true}) menuBar;
 
@@ -28,14 +28,14 @@ export class TitlebarComponent implements OnInit {
     this.menuBar.collapseall();
   }
 
-  private onMinimize(): void{
+  public onMinimize(event: MouseEvent): void{
     this.isMinimized = true;
     if ( this.electronService.isElectronApp ) {
         this.electronService.remote.getCurrentWindow().minimize();
     }
   }
 
-  private onResize():void {
+  public onResize(event: MouseEvent):void {
     this.isMinimized = !this.isMinimized;
     if ( this.electronService.isElectronApp ) {
         const currentWindow = this.electronService.remote.getCurrentWindow();
@@ -47,7 +47,7 @@ export class TitlebarComponent implements OnInit {
     }
   }
 
-  private onClose(): void {
+  public onClose(event: MouseEvent): void {
     this.disableClose = true;
     const dialogRef = this.dialogService.openDialog(SimpleDialogComponent,
         {
@@ -77,12 +77,12 @@ export class TitlebarComponent implements OnInit {
     }
   }
 
-  public isAppMinimized(): boolean {
+  public get isAppMinimized(): boolean {
     return this.isMinimized;
   }
 
-  public getAppTiltle(): string {
-    return this.AppTitle;
+  public get AppTitle(): string {
+    return this._AppTitle;
   }
 
 }

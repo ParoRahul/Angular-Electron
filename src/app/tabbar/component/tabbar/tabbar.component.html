@@ -1,12 +1,15 @@
-<div class="d-flex flex-row text-white align-content-center bg-secondary h-100" >
-    <ng-container *ngFor=" let tab of dynamicTabs ">
-        <div class="d-inline-flex align-items-center tabtitle" [ngClass]="tab.active? 'tab-active':'tab-inactive'" >
-            <span class="px-5" (click)="selectTab(tab)" >{{tab.title}} </span>
-            <span class="px-2 text-right align-items-center" *ngIf="tab.isCloseable" (click)="closeTab(tab)">
-                <i class="material-icons" [style.font-size]="'14px'" >close</i>
-            </span>
-        </div>
-    </ng-container>
+<div class="tabbar bg-secondary ">
+    <div class="d-flex flex-row text-white align-content-center h-100" >
+        <ng-container *ngFor=" let tab of dynamicTabs ">
+            <div class="d-inline-flex align-items-center tabtitle" [ngClass]="tab.active? 'tab-active':'tab-inactive'" >
+                <span class="px-5" (click)="selectTab(tab)" >{{tab.title}} </span>
+                <span class="px-2 text-right align-items-center" *ngIf="tab.isCloseable" (click)="closeTab(tab)">
+                    <i class="material-icons" [style.font-size]="'14px'" >close</i>
+                </span>
+            </div>
+        </ng-container>
+    </div>    
 </div>
-
-<ng-template appDynamicComponent ></ng-template>
+<div class="tabbody">
+    <ng-template appDynamicComponent ></ng-template>
+</div>

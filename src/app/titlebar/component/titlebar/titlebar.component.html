@@ -14,8 +14,8 @@
         <i class="material-icons" >remove</i>   
     </button>
     <button  (click)="onResize($event)">
-        <i class="material-icons" *ngIf="isResized" >filter_none</i>   
-        <i class="material-icons" *ngIf="!isResized" >crop_din</i>             
+        <i class="material-icons" *ngIf="isAppMinimized" >filter_none</i>   
+        <i class="material-icons" *ngIf="!isAppMinimized" >crop_din</i>             
     </button>  
     <button id="closebtn" (click)="onClose($event)" >
         <i class="material-icons">close</i>

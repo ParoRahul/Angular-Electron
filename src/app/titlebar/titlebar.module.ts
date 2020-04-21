@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import {SharedModule} from '../shared/shared.module';
 
 import { TitlebarRoutingModule } from './titlebar.routing.module';

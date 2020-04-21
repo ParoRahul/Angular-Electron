@@ -1,4 +1,9 @@
-<div class="container-fluid mh-100 text-center align-middle bg-green p-5" 
-    [ngClass]="active? 'd-block':'d-none'">
-    <h1> <span class="text-info m-5 p-5"> THIS IS HOME</span></h1>
+<div class="flex-row align-content-center p-1 h-100" [ngClass]="active? 'd-flex':'d-none'">
+    <div class="align-self-center text-center">
+        <div class="text-info p-5"><h2>New Project </h2></div>
+        <button class="btn btn-lg ">
+            <i class="material-icons" *ngIf="!isAppMinimized" >add</i> 
+        </button>
+    </div>
+    <div class="align-self-center text-center">Project History</div>
 </div>
