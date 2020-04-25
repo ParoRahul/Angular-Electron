@@ -1,16 +1,32 @@
 {
   "name": "angular-electron",
-  "version": "0.0.0",
+  "version": "0.2.0",
+  "description": "Electron with Angular 9 [Typescript + Boostrap + Angular Unit Test]",
+  "homepage": "https://github.com/ParoRahul/electron-ng-template",
+  "author": {
+    "name": "Rahul Das",
+    "email": "r.das699@gmail.com"
+  },
+  "keywords": [
+    "angular",
+    "angular 9",
+    "electron",
+    "typescript"
+  ],
+  "private": true,
+  "main": "build/main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "ng:serve": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron": "ng build --base-href ./ --prod && tsc --p electron && electron electron/dist/main.js"
+    "backend:transpile": "tsc -p tsconfig-backend.json",
+    "frontend:transpile": "ng build --base-href ./ --prod",
+    "app:transpile": "npm run backend:transpile && npm run frontend:transpile",
+    "electron:serve": "wait-on http-get://localhost:4200/ && npm run backend:transpile && electron . --serve",
+    "electron": "npm run app:transpile && electron ."
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^9.1.1",
     "@angular/common": "^9.1.1",
@@ -34,10 +50,11 @@
     "@angular/cli": "~9.1.1",
     "@angular/compiler-cli": "~9.1.1",
     "@angular/language-service": "~9.1.1",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "electron-builder": "^22.5.1",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.4.1",
@@ -48,6 +65,7 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "wait-on": "^4.0.2"
   }
 }
