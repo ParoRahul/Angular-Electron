@@ -1,4 +1,10 @@
-##Basic Building Block For Dessk top app using Angular + electron + Bootstrap 
+[![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-ar21.svg)](https://electronjs.org/)
+---------------------------------------
+[![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-ar21.svg)](https://angular.io/) 
+[![Bootstrap Logo](https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg)](https://getbootstrap.com/)
+---------------------------------------
+[![Sqlite Logo](https://www.vectorlogo.zone/logos/sqlite/sqlite-ar21.svg)](https://www.sqlite.org/)
+---------------------------------------
 
 ###Features
 1.  Title bar 
@@ -11,7 +17,16 @@
 2. Tab Scheduleing service
 3. Log In and Authemtication sercice 
 
-4. type orm  
+
+
+|Command|Description|
+|--|--|
+|`npm run ng:serve`| Execute the app in the browser |
+|`npm run backend:transpile`| Build the electron part of app in the /build folder. |
+|`npm run frontend:transpile`| Build the angular Fe app with Angular aot. Your built files are in the /build/UT folder. |
+|`npm run app:transpile`| Builds the complete application |
+|`npm run electron:serve`| Execute the app in the electron  |
+
 
 https://github.com/wboxx1/typescript-electron-angular6-sqlite3/tree/master/src
 

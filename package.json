@@ -1,7 +1,7 @@
 {
   "name": "angular-electron",
   "version": "0.2.0",
-  "description": "Electron with Angular 9 [Typescript + Boostrap + Angular Unit Test]",
+  "description": "Electron with Angular 9 Template [Typescript + Boostrap + Angular Unit Test]",
   "homepage": "https://github.com/ParoRahul/electron-ng-template",
   "author": {
     "name": "Rahul Das",
