@@ -29,7 +29,7 @@
 1. Dialog Service
 2. Tab Scheduleing service
 
-[![App Sccrenshot](https://github.com/ParoRahul/electron-ng-template/../../../../frontend/assets/applook.png)](https://github.com/ParoRahul/electron-ng-template/)
+[![App Sccrenshot](https://github.com/ParoRahul/electron-ng-template/frontend/assets/applook.png)](https://github.com/ParoRahul/electron-ng-template/)
 
 https://github.com/wboxx1/typescript-electron-angular6-sqlite3/tree/master/src
 
