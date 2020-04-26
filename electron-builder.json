@@ -1,0 +1,44 @@
+{
+    "productName": "ngE_template",
+    "extends": null,
+    "directories": {
+      "output": "release/"
+    },
+      "files": [
+          "build/*",
+          "!**/*.ts",
+          "!*.code-workspace",
+          "!readme.md",
+          "!package.json",
+          "!package-lock.json",
+          "!forntend/",
+          "!backend/",
+          "!e2e/",
+          "!angular.json",
+          "!tsconfig.app.json",
+          "!tsconfig.spec.json",
+          "!tsconfig-backend.json",
+          "!karma.conf.js",
+          "!tsconfig.json",
+          "!tslint.json",
+          "!browserlint*"
+      ],
+    "win": {
+      "icon": "build/assets/icons",
+      "target": [
+        "portable"
+      ]
+    },
+    "mac": {
+      "icon": "build/assets/icons",
+      "target": [
+        "dmg"
+      ]
+    },
+    "linux": {
+      "icon": "build/assets/icons",
+      "target": [
+        "AppImage"
+      ]
+    }
+  }

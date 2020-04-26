@@ -21,7 +21,7 @@
     ]
   },
   "files": [
-    "backend/main.ts"
+    "backend/electron.ts"
   ],
   "exclude": [
     "node_modules",
