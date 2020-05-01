@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NgxElectronModule } from 'ngx-electron';
+import { ElectronService } from './service/electron.service';
 
 import { SchedulerService } from './service/scheduler.service';
 import { DialogService } from './service/dialog.service';
@@ -22,15 +22,14 @@ import { DynamicCompDirective } from './directive/dynamic-comp.directive';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxElectronModule,
   ],
   providers: [ SchedulerService,
-               DialogService ],
+               DialogService,
+               ElectronService],
   exports: [ /* Anguler Module Exports */
             CommonModule,
             FormsModule,
             ReactiveFormsModule,
-            NgxElectronModule,
             /* Custom Directive Exports */
             DynamicCompDirective,
             /* Custom Component Exports */

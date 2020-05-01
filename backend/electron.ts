@@ -7,7 +7,6 @@ const serve = args.some(val => val === '--serve');
 
 export class MainProcess {
     private static logpath:string ='../log';
-    private static debug:boolean = false;
     private static initWinTitle:string = 'MainWindow';
     private static mainWindowId:number;
     private Dblocation:string
@@ -21,7 +20,7 @@ export class MainProcess {
             app.quit();
         }
         // app.setAppLogsPath(MainProcess.logpath);
-        this.Dblocation = 'D:/node/angular/PouchDB';
+        /* this.Dblocation = 'D:/node/angular/PouchDB'; */
     }
 
     createWindow(winTitle:string):void  {
@@ -35,7 +34,6 @@ export class MainProcess {
                 parent: null,
                 useContentSize: true,
                 show: false,
-                icon: path.join(__dirname,'app_taskbar_icon.png'),
                 webPreferences: {
                     nodeIntegration: true,
                     nodeIntegrationInWorker: true
@@ -59,7 +57,7 @@ export class MainProcess {
             );
         }
 
-        if (MainProcess.debug)
+        if (serve)
             window.webContents.openDevTools();
         MainProcess.mainWindowId=window.id;
 
@@ -96,9 +94,6 @@ export class MainProcess {
     }
 
     run() {
-        if (MainProcess.debug) {
-             app.disableHardwareAcceleration();
-        }
 
         app.on('ready', () => {
             this.createWindow(MainProcess.initWinTitle)

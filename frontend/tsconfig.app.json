@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "../build/out-tsc/app",
+    "types": []
+  },
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}

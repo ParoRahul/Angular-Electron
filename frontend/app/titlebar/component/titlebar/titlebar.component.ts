@@ -3,7 +3,7 @@ import { MenubarComponent } from '../menubar/menubar.component';
 import { SimpleDialogComponent } from '../../../shared/component/simpleDialog/simpleDialog.component';
 
 import { DialogService } from '../../../shared/service/dialog.service';
-import { ElectronService } from 'ngx-electron';
+import { ElectronService } from '../../../shared/service/electron.service';
 
 @Component({
   selector: 'app-titlebar',

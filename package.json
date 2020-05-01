@@ -1,6 +1,6 @@
 {
   "name": "angular-electron",
-  "version": "0.2.0",
+  "version": "0.0.2",
   "description": "Electron with Angular 9 Template [Typescript + Boostrap + Angular Unit Test]",
   "homepage": "https://github.com/ParoRahul/electron-ng-template",
   "author": {
@@ -18,11 +18,12 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "ng": "ng",
-    "ng:serve": "ng serve",
+    "start": "npm-run-all -p electron:serve ng:serve",
+    "ng:serve": "ng serve -c dev -o",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "backend:transpile": "tsc -p tsconfig-backend.json",
+    "backend:transpile": "tsc -p backend/tsconfig.backend.json",
     "frontend:transpile": "ng build --base-href ./ --prod",
     "app:transpile": "npm run frontend:transpile && npm run backend:transpile",
     "electron:serve": "wait-on http-get://localhost:4200/ && npm run backend:transpile && electron . --serve",
@@ -31,7 +32,7 @@
     "build:windows": "npm run app:transpile && electron-builder build --windows",
     "build:mac": "npm run app:transpile && electron-builder build --mac"
   },
-  "devDependencies": {
+  "dependencies": {
     "@angular/animations": "^9.1.1",
     "@angular/common": "^9.1.1",
     "@angular/compiler": "^9.1.1",
@@ -43,10 +44,14 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "bootstrap": "^4.4.1",
     "material-design-icons": "^3.0.1",
-    "ngx-electron": "^2.2.0",
     "rxjs": "~6.5.4",
+    "sqlite3": "^4.1.1",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
+    "typeorm": "^0.2.24",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "^9.1.0",
     "@angular-devkit/build-angular": "~0.901.1",
     "@angular/cli": "~9.1.1",
     "@angular/compiler-cli": "~9.1.1",
@@ -54,20 +59,24 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
-    "electron": "^8.2.1",
     "codelyzer": "^5.1.2",
+    "electron": "^8.2.1",
     "electron-builder": "^22.5.1",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.4.1",
-    "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-electron": "^6.3.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "npm-run-all": "^4.1.5",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3",
     "wait-on": "^4.0.2"
+  },
+  "engines": {
+    "node": ">=10.16.0"
   }
 }

@@ -1,7 +1,7 @@
 <div align="center">
     <div>
         <h1>Electron Angular Template<h1>
-        <img src=".github/applook.png", width="500">
+        <img src=".github/applook.png", width="650">
         <!-- <h6>Title not decided till now<h6> -->
     </div> 
 </div>
@@ -15,8 +15,8 @@
 [![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-ar21.svg)](https://angular.io/) 
 [![Bootstrap Logo](https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg)](https://getbootstrap.com/)
 
----------------------------------------
-[![Sqlite Logo](https://www.vectorlogo.zone/logos/sqlite/sqlite-ar21.svg)](https://www.sqlite.org/)
+<!-- --------------------------------------- -->
+<!-- [![Sqlite Logo](https://www.vectorlogo.zone/logos/sqlite/sqlite-ar21.svg)](https://www.sqlite.org/) -->
 
 ---------------------------------------
 
@@ -27,12 +27,31 @@ This repositoty is created with the help of [Angular Electron maximegris ](https
 
 ----------------------------------------
 
+#### Getting Started
+
+* Clone this repository locally :
+
+``` 
+git clone https://github.com/ParoRahul/electron-ng-template.git
+```
+* Modify the following file to replace the existing project name to your project name
+  1. package.json
+  2. angular.json 
+  3. frontend/karma.conf.js
+
+* Install dependencies with npm :
+
+``` bash
+npm install
+```
+* jump into coding 
+-----------------------------------------------
 #### Big reminder 
 
-`ng serve` is not going to work as the browser mode dont support the netaive Library. Kindly use ` npm run ng:server` , which inerternally use `ng serve -c dev -o`
+`ng serve` is not going to work as the browser mode dont support the netaive Library. Kindly use ` npm run start` , which inerternally use `ng serve -c dev -o`
 
 ----------------------------------------
-
+#### Commands
 |Command|Description| 
 |--|--|
 |`npm run ng:serve`| Execute the app in the browser |
@@ -46,19 +65,13 @@ This repositoty is created with the help of [Angular Electron maximegris ](https
 |`npm run build:mac`| Execute the app in the electron for MAC  |
 
 
-## Features
+#### Features
 1.  Title bar 
 2.  Menubar
 3.  Status bar 
 4.  Tab bar
 
-## Service 
+#### Service 
 1. Dialog Service
 2. Tab Scheduleing service
-
-[![App Sccrenshot](./.github/applook.png)](https://github.com/ParoRahul/electron-ng-template/)
-
-
-
-
-https://scotch.io/tutorials/customize-the-browsers-scrollbar-with-css
+3. File system and OS process, child process access
