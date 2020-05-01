@@ -29,21 +29,13 @@ This repositoty is created with the help of [Angular Electron maximegris ](https
 
 #### Getting Started
 
-* Clone this repository locally :
-
-``` 
-git clone https://github.com/ParoRahul/electron-ng-template.git
-```
+* Clone this repository locally : ``` git clone https://github.com/ParoRahul/electron-ng-template.git ```
 * Modify the following file to replace the existing project name to your project name
   1. package.json
   2. angular.json 
   3. frontend/karma.conf.js
 
-* Install dependencies with npm :
-
-``` bash
-npm install
-```
+* Install dependencies with npm :``` npm install```
 * jump into coding 
 -----------------------------------------------
 #### Big reminder 
