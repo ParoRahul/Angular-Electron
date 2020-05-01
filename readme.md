@@ -1,12 +1,3 @@
-<div align="center">
-    <div>
-        <h1>Electron Angular Template<h1>
-        <img src=".github/applook.png", width="650">
-        <!-- <h6>Title not decided till now<h6> -->
-    </div> 
-</div>
-
-
 # Electron Angular Template
 
 [![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-ar21.svg)](https://electronjs.org/)
@@ -19,8 +10,15 @@
 <!-- [![Sqlite Logo](https://www.vectorlogo.zone/logos/sqlite/sqlite-ar21.svg)](https://www.sqlite.org/) -->
 
 ---------------------------------------
+<div align="center">
+    <div>
+        <h1>Electron Angular Template<h1>
+        <img src=".github/applook.png", width="650">
+        <!-- <h6>Title not decided till now<h6> -->
+    </div> 
+</div>
 
-
+-----------------------------------------
 #### Credits 
 
 This repositoty is created with the help of [Angular Electron maximegris ](https://github.com/maximegris/angular-electron). Big Thanks for the boilerplate code.
