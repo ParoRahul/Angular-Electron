@@ -23,9 +23,9 @@ export class MainProcess {
         /* this.Dblocation = 'D:/node/angular/PouchDB'; */
     }
 
-    createWindow(winTitle:string):void  {
+    createWindow():void  {
         let window = new BrowserWindow({
-                title: 'Main_Window',
+                title: MainProcess.initWinTitle,
                 width: 1050,
                 height: 700,
                 minWidth: 600,
@@ -33,6 +33,7 @@ export class MainProcess {
                 frame: false,
                 parent: null,
                 useContentSize: true,
+                icon:'./icns/icon.ico',
                 show: false,
                 webPreferences: {
                     nodeIntegration: true,
@@ -96,7 +97,7 @@ export class MainProcess {
     run() {
 
         app.on('ready', () => {
-            this.createWindow(MainProcess.initWinTitle)
+            this.createWindow()
         });
 
         ipcMain.on('window.close', (event, id) => {

@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MenubarComponent } from '../menubar/menubar.component';
-import { SimpleDialogComponent } from '../../../shared/component/simpleDialog/simpleDialog.component';
+/* import { SimpleDialogComponent } from '../../../shared/component/simpleDialog/simpleDialog.component';
 
-import { DialogService } from '../../../shared/service/dialog.service';
+import { DialogService } from '../../../shared/service/dialog.service'; */
 import { ElectronService } from '../../../shared/service/electron.service';
 
 @Component({
@@ -14,10 +14,11 @@ export class TitlebarComponent implements OnInit {
   private isMinimized: boolean;
   public disableClose: boolean;
   private _AppTitle: string = 'Angular-Electron-Demo-App';
+  @Output() AppClose = new EventEmitter(false);
 
   @ViewChild(MenubarComponent,{static:true}) menuBar;
 
-  constructor(  private dialogService: DialogService,
+  constructor(  /* private dialogService: DialogService, */
                 private electronService: ElectronService) { }
 
   ngOnInit() {
@@ -56,6 +57,11 @@ export class TitlebarComponent implements OnInit {
   }
 
   public onClose(event: MouseEvent): void {
+    if (this.electronService.isElectronApp)
+          this.AppClose.emit();
+  }
+
+  /* public onClose(event: MouseEvent): void {
     this.disableClose = true;
     const dialogRef = this.dialogService.openDialog(SimpleDialogComponent,
         {
@@ -77,7 +83,7 @@ export class TitlebarComponent implements OnInit {
             this.closeAppAutomatic();
         }
     });
-  }
+  } */
 
   public closeAppAutomatic():void {
     if (this.electronService.isElectronApp) {
@@ -85,7 +91,6 @@ export class TitlebarComponent implements OnInit {
     }
   }
 
-  
 
 }
 

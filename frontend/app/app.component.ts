@@ -2,7 +2,9 @@ import { Component, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { SchedulerService } from './shared/service/scheduler.service';
+import { ElectronService } from './shared/service/electron.service';
 import { DialogService } from './shared/service/dialog.service';
+import { DBService } from './shared/service/db.service';
 
 import { TabbarComponent } from './tabbar/component/tabbar/tabbar.component';
 import { TitlebarComponent } from './titlebar/component/titlebar/titlebar.component';
@@ -13,6 +15,7 @@ import { LoginComponent } from './membership/component/login/login.component';
 
 import { SchedulerData } from './shared/model/schedulerData';
 import { TabContents } from './tabbar/model/tabContent';
+
 
 @Component({
   selector: 'app-root',
@@ -28,7 +31,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     @ViewChild(TitlebarComponent,{static:true}) titleBar;
 
     constructor(  private schedulerService: SchedulerService,
-                  private dialogService: DialogService ) { }
+                  private electronService: ElectronService,
+                  private dialogService: DialogService,
+                  private dBService: DBService  ) {
+                    this.dBService.OpenDatabase();
+                  }
 
     ngAfterViewInit() {
         this.schedulerSubscription = this.schedulerService.serveScheduler().
@@ -71,6 +78,31 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         dialogRef.afterClosed.subscribe( result => {
             console.log(result);
         });
+    }
+
+    public hanleAppClose(event:Event ){
+        let features = {
+            type: 'question',
+            buttons: ['Yes', 'Cancel'],
+            defaultId : 1,
+            title : 'Do you really want to close the application ?',
+            message : 'Press Yes to close the app',
+            cancelId: 1,
+        };
+        const currentWindow = this.electronService.remote.getCurrentWindow();
+        this.electronService.remote.dialog.showMessageBox(currentWindow,features)
+        .then(({response,checkboxChecked}) => {
+            if (response === 0 ) {
+                    this.dBService.CloseDatabase()
+                .then(() => {
+                    this.electronService.remote.getCurrentWindow().close();
+                }).catch((error) => {
+                    console.log('Error While DB Close');
+                })
+            }
+        }).catch((error) => {
+            console.log('Error on hanleAppClose')
+        })
     }
 
 }

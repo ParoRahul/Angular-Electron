@@ -1,24 +1,31 @@
-# Electron Angular Template
-
-[![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-ar21.svg)](https://electronjs.org/)
-
----------------------------------------
-[![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-ar21.svg)](https://angular.io/) 
-[![Bootstrap Logo](https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg)](https://getbootstrap.com/)
-
-<!-- --------------------------------------- -->
-<!-- [![Sqlite Logo](https://www.vectorlogo.zone/logos/sqlite/sqlite-ar21.svg)](https://www.sqlite.org/) -->
-
----------------------------------------
 <div align="center">
-    <div>
-        <h1>Electron Angular Template<h1>
-        <img src=".github/applook.png", width="650">
-        <!-- <h6>Title not decided till now<h6> -->
-    </div> 
+  <h1> Electron Angular Template With Database Sqlite3 and Typeorm<h1>
 </div>
 
------------------------------------------
+<a href="https://electronjs.org/">
+    <img style="display: inline-block" src="https://www.vectorlogo.zone/logos/electronjs/electronjs-ar21.svg"  height="128">
+</a>
+
+---------------------------------------
+
+<a href="https://angular.io/">
+    <img style="display: inline-block" src="https://www.vectorlogo.zone/logos/angular/angular-ar21.svg"  height="128">
+</a>
+<a href="https://getbootstrap.com/">
+    <img style="display: inline-block" src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg"  height="128">
+</a>
+
+---------------------------------------
+
+<a href="www.sqlite.org">
+    <img style="display: inline-block" src="https://www.vectorlogo.zone/logos/sqlite/sqlite-ar21.svg"  height="128">
+</a>
+<a href="http://typeorm.io/">
+    <img style="display: inline-block" src="https://github.com/typeorm/typeorm/raw/master/resources/logo_big.png"  height="128">
+</a>
+
+---------------------------------------
+
 #### Credits 
 
 This repositoty is created with the help of [Angular Electron maximegris ](https://github.com/maximegris/angular-electron). Big Thanks for the boilerplate code.
@@ -64,4 +71,6 @@ This repositoty is created with the help of [Angular Electron maximegris ](https
 1. Dialog Service
 2. Tab Scheduleing service
 3. File system and OS process, child process access
+4. sqlite3 with typeorm From Electron Render process. Follow frontend/app/shared/service/db.service.ts & angular.json for customwebpack.
+
 

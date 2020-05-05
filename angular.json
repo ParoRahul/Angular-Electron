@@ -14,6 +14,9 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "build",
+            "customWebpackConfig": {
+              "path": "./extra-webpack.config.js"
+            },
             "index": "frontend/index.html",
             "main": "frontend/main.ts",
             "polyfills": "frontend/polyfills.ts",
@@ -68,7 +71,10 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "Angular-Electron:build"
+            "browserTarget": "Angular-Electron:build",
+            "customWebpackConfig": {
+              "path": "./extra-webpack.config.js"
+            }
           },
           "configurations": {
             "dev": {

@@ -6,6 +6,7 @@ import { ElectronService } from './service/electron.service';
 
 import { SchedulerService } from './service/scheduler.service';
 import { DialogService } from './service/dialog.service';
+import { DBService } from './service/db.service';
 
 import { DialogLayoutComponent } from './component/dialogLayout/dialogLayout.component';
 import { SimpleDialogComponent } from './component/simpleDialog/simpleDialog.component';
@@ -24,8 +25,9 @@ import { DynamicCompDirective } from './directive/dynamic-comp.directive';
     ReactiveFormsModule,
   ],
   providers: [ SchedulerService,
+               ElectronService,
                DialogService,
-               ElectronService],
+               DBService ],
   exports: [ /* Anguler Module Exports */
             CommonModule,
             FormsModule,

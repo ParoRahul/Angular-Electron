@@ -1,6 +1,6 @@
 {
   "name": "angular-electron",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Electron with Angular 9 Template [Typescript + Boostrap + Angular Unit Test]",
   "homepage": "https://github.com/ParoRahul/electron-ng-template",
   "author": {
@@ -23,7 +23,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "backend:transpile": "tsc -p backend/tsconfig.backend.json",
+    "backend:transpile": "tsc -p backend/tsconfig.backend.json && copyfiles -u 1 backend/icons/* build",
     "frontend:transpile": "ng build --base-href ./ --prod",
     "app:transpile": "npm run frontend:transpile && npm run backend:transpile",
     "electron:serve": "wait-on http-get://localhost:4200/ && npm run backend:transpile && electron . --serve",
@@ -33,33 +33,28 @@
     "build:mac": "npm run app:transpile && electron-builder build --mac"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^9.1.0",
+    "@angular-devkit/build-angular": "~0.901.1",
     "@angular/animations": "^9.1.1",
+    "@angular/cli": "~9.1.1",
     "@angular/common": "^9.1.1",
     "@angular/compiler": "^9.1.1",
+    "@angular/compiler-cli": "~9.1.1",
     "@angular/core": "^9.1.1",
     "@angular/forms": "^9.1.1",
+    "@angular/language-service": "~9.1.1",
     "@angular/platform-browser": "^9.1.1",
     "@angular/platform-browser-dynamic": "^9.1.1",
     "@angular/router": "^9.1.1",
     "@fortawesome/fontawesome-free": "^5.13.0",
-    "bootstrap": "^4.4.1",
-    "material-design-icons": "^3.0.1",
-    "rxjs": "~6.5.4",
-    "sqlite3": "^4.1.1",
-    "tslib": "^1.10.0",
-    "typeorm": "^0.2.24",
-    "zone.js": "~0.10.2",
-    "@angular-builders/custom-webpack": "^9.1.0",
-    "@angular-devkit/build-angular": "~0.901.1",
-    "@angular/cli": "~9.1.1",
-    "@angular/compiler-cli": "~9.1.1",
-    "@angular/language-service": "~9.1.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "bootstrap": "^4.4.1",
     "codelyzer": "^5.1.2",
     "electron": "^8.2.1",
     "electron-builder": "^22.5.1",
+    "electron-rebuild": "^1.10.1",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.4.1",
@@ -67,14 +62,23 @@
     "karma-electron": "^6.3.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "material-design-icons": "^3.0.1",
     "npm-run-all": "^4.1.5",
     "protractor": "~5.4.3",
+    "rxjs": "~6.5.4",
     "ts-node": "~8.3.0",
+    "tslib": "^1.10.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3",
-    "wait-on": "^4.0.2"
+    "wait-on": "^4.0.2",
+    "zone.js": "~0.10.2"
   },
   "engines": {
     "node": ">=10.16.0"
+  },
+  "dependencies": {
+    "copyfiles": "^2.2.0",
+    "sqlite3": "^4.2.0",
+    "typeorm": "^0.2.24"
   }
 }
