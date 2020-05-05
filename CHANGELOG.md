@@ -1,6 +1,6 @@
 ## 0.1.0 (2020-05-04)
 * Integrate SOLITE Database in Application 
-* Replace Html dialog for close Application warning by Electron diualog
+* Replace Html dialog for close Application warning by Electron dialog
 * Appsize - 49,375 KB
 
 ---------------------------------------------------
